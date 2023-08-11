@@ -1,6 +1,6 @@
 <template>
   <header
-    class="bg-white flex items-center justify-between border-b afp px-6 py-4 cxn"
+    class="bg-white flex items-center justify-between border-b afp py-4 cxn"
   >
     <h1 class="avt awb awk axq">
       <time datetime="2022-01">{{ currentMonth + " " + currentYear }}</time>

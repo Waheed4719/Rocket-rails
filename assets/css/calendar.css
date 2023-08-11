@@ -34,7 +34,7 @@ html {
   -moz-tab-size: 4; /* 3 */
   -o-tab-size: 4;
   tab-size: 4; /* 3 */
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system,
+  font-family: quicksand, Inter var, ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji'; /* 4 */
@@ -599,7 +599,7 @@ select {
 }
 
 @font-face {
-  font-family: Inter var;
+  font-family: quicksand, Inter var;
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -608,7 +608,7 @@ select {
 }
 /*
 @font-face {
-  font-family: Inter var;
+  font-family: quicksand, Inter var;
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
@@ -719,7 +719,7 @@ html {
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system,
+  font-family: quicksand, Inter var, ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
@@ -6094,7 +6094,7 @@ body {
     'Liberation Mono', 'Courier New', monospace;
 }
 .avl {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system,
+  font-family: quicksand, Inter var, ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';

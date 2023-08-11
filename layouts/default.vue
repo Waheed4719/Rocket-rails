@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-[white]">
     <div>
       <Sidebar />
-      <div class="den">
+      <div class="lg:pl-72 bg-white">
         <div
           class="ac di ee flex ng shrink-0 items-center aab afa afp bg-white ard bbi cbu cex ddc"
         >
@@ -112,7 +112,7 @@
             </div>
           </div>
         </div>
-        <main class="py-5 px-5"><slot /></main>
+        <main class="py-5 px-5 overflow-auto h-[calc(100vh-64px)]"><slot /></main>
       </div>
     </div>
   </div>

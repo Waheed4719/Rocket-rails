@@ -4,7 +4,7 @@
       <CalendarHeader
         @prevMonth="goToPreviousMonth"
         @nextMonth="goToNextMonth"
-        @today="goToToday"
+        @getToday="goToToday"
         @prevYear="goToPreviousYear"
         @nextYear="goToNextYear"
         :currentMonth="currentMonth"
@@ -145,7 +145,7 @@ const {
   previousMonthPaddingDays,
   daysInMonth,
   currentFormattedDate,
-} = toRefs(state);
+} = state;
 
 // write the dates in iso format
 const events = [
