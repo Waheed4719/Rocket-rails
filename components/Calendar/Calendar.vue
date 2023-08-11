@@ -37,7 +37,7 @@
                 class="kw">
                 <li>
                   <a href="javascript:void(0);" class="bqb flex">
-                    <p class="ui overflow-hidden text-ellipsis whitespace-nowrap font-medium axq brn">Design review</p>
+                    <p class="ui overflow-hidden text-ellipsis whitespace-nowrap font-semibold axq brn">Design review</p>
                     <time
                       dateTime="2022-01-03T10:00"
                       class="jr ly uj axm brn diq">
@@ -47,7 +47,7 @@
                 </li>
                 <li>
                   <a href="javascript:void(0);" class="bqb flex">
-                    <p class="ui overflow-hidden text-ellipsis whitespace-nowrap font-medium axq brn">Sales meeting</p>
+                    <p class="ui overflow-hidden text-ellipsis whitespace-nowrap font-semibold axq brn">Sales meeting</p>
                     <time
                       dateTime="2022-01-03T14:00"
                       class="jr ly uj axm brn diq">

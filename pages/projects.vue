@@ -1,4 +1,14 @@
 <template>
+  <div class="mb-4">
+    <h2 class="text-gray-800 font-semibold mb-2">🚀 Client Projects</h2>
+    <div class="flex justify-between">
+      <h1 class="text-3xl font-bold">Finance Mobile App</h1>
+
+      <div></div>
+    </div>
+
+
+    </div>
   <div
     class="grid gap-4 items-start"
     style="grid-template-columns: repeat(6, minmax(300px, 1fr))"
@@ -36,7 +46,7 @@
         </template>
       </div>
       <div
-        class="border-dashed rounded-md border-gray-300 p-2 items-center flex justify-center text-black font-semibold gap-2 border cursor-pointer"
+        class="border-dashed rounded-md border-gray-300 p-2 items-center flex justify-center text-gray-700 font-semibold gap-2 border cursor-pointer"
       >
         <PlusIcon class="h-6 text-primaryColor" />
         <span>Add Task</span>
@@ -47,7 +57,7 @@
 <script setup lang="ts">
 import { PlusIcon } from "@heroicons/vue/20/solid";
 import Card from "@/components/Kanban/Card.vue";
-import { Task, TaskStatus } from "../types";
+import { Task, TaskStatus } from "types";
 
 type TaskResponse = {
   tasks: Task[];

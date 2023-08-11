@@ -1,13 +1,33 @@
 <template>
   <div class="ly cpy cqf crm cut cwo cyy">
     <div class="flex uo ym aao ade aff afp bg-[#f5f5f5] arf asp">
-      <div class="flex ng shrink-0 items-center">
+      <!-- <div class="flex ng shrink-0 items-center">
         <img
           class="ob th"
           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600"
           alt="Your Company"
         />
+      </div> -->
+      <div class="flex justify-between items-center mt-5">
+        <div class="flex gap-2 items-center">
+          <div
+            class="rounded-md bg-purple-900 flex items-center justify-center w-[40px] h-[40px] text-white"
+          >
+            W
+          </div>
+          <div class="flex flex-col">
+            <h3 class="font-semibold text-gray-700 text-lg">Red Studio</h3>
+            <h5 class="text-gray-400 text-xs font-semibold">Team Plan</h5>
+          </div>
+        </div>
+        <ChevronUpDownIcon class="h-6 text-gray-400" />
       </div>
+
+      <div class="rounded-lg px-2 flex justify-between bg-white items-center h-[40px]">
+        <div class="flex items-center text-gray-500 gap-2"><MagnifyingGlassIcon class="h-5" /><input class="border-none text-sm flex flex-1 placeholder:text-gray-400 font-semibold w-[50%]" placeholder="Quick find" /></div>
+        <div class="flex gap-2"><div class="rounded-md text-gray-400 bg-[#efefef] text-sm px-1">⌘</div><div class="rounded-md text-gray-400 bg-[#efefef] text-sm px-1">K</div></div>
+      </div>
+
       <nav class="flex uh ym">
         <ul role="list" class="flex uh ym aaq">
           <li>
@@ -86,6 +106,7 @@
 <script setup lang="ts">
 import { routes } from "@/constants/routes";
 import * as HeroIcons from "@heroicons/vue/24/outline";
+import { ChevronUpDownIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 const { currentRoute } = useRouter();
 
 const teams = [
