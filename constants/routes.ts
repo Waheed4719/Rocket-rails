@@ -7,12 +7,12 @@ export type Route = {
 export const routes = <Route[]>[
     {
         name: 'Dashboard',
-        path: '/',
+        path: '/dashboard',
         icon: 'HomeIcon',
     },
     {
-        name: 'Team',
-        path: '/team',
+        name: 'Teams',
+        path: '/teams',
         icon: 'UsersIcon',
     },
     {

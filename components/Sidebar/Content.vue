@@ -35,18 +35,18 @@
     </div>
   </div>
 
-  <nav class="flex uh flex-col">
-    <ul role="list" class="flex uh flex-col aaq">
+  <nav class="flex flex-1 flex-col">
+    <ul role="list" class="flex flex-1 flex-col gap-y-7">
       <li>
-        <ul role="list" class="fv abj">
-          <li v-for="route in routes" :key="route.name">
+        <ul role="list" class="-mx-2">
+          <li v-for="route in routes" :key="route.name" class="my-1">
             <nuxt-link
               :to="route.path"
               :class="{
                 'bg-primaryColor text-white':
                   currentRoute.name == route.name ||
                   currentRoute.path == route.path,
-                'axo blb bic ': currentRoute.path != route.path,
+                'text-gray-600 blb bic ': currentRoute.path != route.path,
                 'bqb flex gap-x-3 rounded-xl p-2 text-sm leading-6 font-semibold group': true,
               }"
             >
@@ -57,12 +57,12 @@
         </ul>
       </li>
       <li>
-        <div class="avx font-semibold leading-6 axk">Your teams</div>
-        <ul role="list" class="fv kw abj">
-          <li v-for="team in teams" :key="team.name">
+        <div class="text-xs font-semibold text-gray-400">Your teams</div>
+        <ul role="list" class="-mx-2 mt-2 ">
+          <li v-for="team in teams" :key="team.name" class="my-1">
             <a
               href=":null"
-              class="axo blb bic bqb flex gap-x-3 rounded-xl p-2 text-sm leading-6 font-semibold"
+              class="text-gray-600 blb bic bqb flex gap-x-3 rounded-xl p-2 text-sm leading-6 font-semibold"
             >
               <span
                 class="axk afp bqe brn flex w-6 h-6 shrink-0 items-center justify-center rounded-md border text-xs font-medishrink-0 bg-white"
@@ -79,7 +79,7 @@
       <li class="mt-auto flex justify-between">
         <a
           href=":null"
-          class="bqb fv flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 axo bic blb"
+          class="bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 axo bic blb"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@
         </a>
         <a
           href=":null"
-          class="bqb fv flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 axo bic blb"
+          class="bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 axo bic blb"
           @click="signOut()"
           >
         <ArrowLeftOnRectangleIcon class="w-6 h-6 shrink-0 axk brn"/> Log out
