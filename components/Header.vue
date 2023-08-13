@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ac di ee flex ng shrink-0 items-center aab afa afp bg-white ard bbi cbu cex ddc"
+    class="lg:hidden ac di ee flex ng shrink-0 items-center aab afa afp bg-white ard bbi cbu cex ddc"
   >
     <button type="button" class="fo aqm axo cux">
       <span class="t">Open sidebar</span>

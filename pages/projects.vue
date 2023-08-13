@@ -1,16 +1,15 @@
 <template>
-  <div class="mb-4">
-    <h2 class="text-gray-800 font-semibold mb-2">🚀 Client Projects</h2>
+  <div class="mb-4 px-8">
+    <h2 class="text-gray-600 font-semibold mb-1 text-md">🚀 Client Projects</h2>
     <div class="flex justify-between">
       <h1 class="text-3xl font-bold">Finance Mobile App</h1>
 
       <div></div>
     </div>
-
-
-    </div>
+  </div>
+  <div class="h-[1px] w-full bg-gray-200 my-5"></div>
   <div
-    class="grid gap-4 items-start"
+    class="grid gap-4 items-start px-8"
     style="grid-template-columns: repeat(6, minmax(300px, 1fr))"
   >
     <div
@@ -30,7 +29,7 @@
         </h3>
         <div><PlusIcon class="h-6" /></div>
       </div>
-      <div class="flex flex-col gap-2 ">
+      <div class="flex flex-col gap-2">
         <template
           v-if="tasks?.filter((task) => task.status === category).length === 0"
         >
@@ -58,6 +57,10 @@
 import { PlusIcon } from "@heroicons/vue/20/solid";
 import Card from "@/components/Kanban/Card.vue";
 import { Task, TaskStatus } from "types";
+
+definePageMeta({
+  layout: "authenticated",
+});
 
 type TaskResponse = {
   tasks: Task[];
@@ -104,6 +107,8 @@ function getBgColorForCategory(status: string) {
       return "bg-yellow-500";
     case "completed":
       return "bg-green-500";
+    case "review":
+      return "bg-[#00a6da]";
     default:
       return "bg-orange-600";
   }
