@@ -21,8 +21,8 @@ export const routes = <Route[]>[
         icon: 'FolderIcon',
     },
     {
-        name: 'Calendar',
-        path: '/calendar',
+        name: 'Events',
+        path: '/events',
         icon: 'CalendarIcon',
     },
     {

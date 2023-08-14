@@ -3,11 +3,9 @@
     class="flex flex-col p-4 gap-2 bg-white shadow-md rounded-lg"
     draggable="true"
   >
-    <!-- <h4>{{ task.title }}</h4>
-    <p>{{ task.description }}</p> -->
     <div>
-      <h5 class="text-gray-500 text-xs font-semibold">{{task.category}}</h5>
-      <h3 class="font-bold text-black">{{task.title}}</h3>
+      <h5 class="text-gray-400 text-xs font-semibold">{{task.category}}</h5>
+      <h3 class="font-bold text-gray-600">{{task.title}}</h3>
     </div>
 
     <p class="text-sm my-1 text-gray-400 font-medium">

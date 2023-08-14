@@ -9,57 +9,35 @@
   </div>
   <div class="h-[1px] w-full bg-gray-200 my-5"></div>
   <div
-    class="grid gap-4 items-start px-8"
+    class="grid gap-4 px-8"
     style="grid-template-columns: repeat(6, minmax(300px, 1fr))"
   >
-    <div
+    <Column
       v-for="category in categories"
-      class="flex flex-col gap-2 bg-gray-100 p-2 rounded-md"
+      class="flex flex-col gap-2 p-2 rounded-md"
       @drop="drop($event, category)"
-      @dragover="allowDrop"
+      @dragover="allowDrop($event, category)"
+      @dragleave="throttle(() => dragLeave(), 300)"
+      :category="category"
+      :key="category"
+      :tasks="tasks?.filter((task) => task.status === category) || []"
+      :hoveredCategory="hoveredCategory == category"
     >
-      <div
-        :class="[
-          getBgColorForCategory(category),
-          'p-2 text-white rounded-md flex justify-between',
-        ]"
-      >
-        <h3 class="font-medium text-md">
-          {{ category.substring(0, 1).toUpperCase() + category.substring(1) }}
-        </h3>
-        <div><PlusIcon class="h-6" /></div>
-      </div>
-      <div class="flex flex-col gap-2">
-        <template
-          v-if="tasks?.filter((task) => task.status === category).length === 0"
-        >
-          <p class="text-gray-400 text-sm">No tasks in this category</p>
-        </template>
-        <template v-else>
-          <Card
-            v-for="task in tasks?.filter((task) => task.status === category)"
-            :key="task.id"
-            :task="task"
-            @dragstart="(ev) => drag(ev, task.id)"
-          />
-        </template>
-      </div>
-      <div
-        class="border-dashed rounded-md border-gray-300 p-2 items-center flex justify-center text-gray-700 font-semibold gap-2 border cursor-pointer"
-      >
-        <PlusIcon class="h-6 text-primaryColor" />
-        <span>Add Task</span>
-      </div>
-    </div>
+    </Column>
   </div>
 </template>
 <script setup lang="ts">
-import { PlusIcon } from "@heroicons/vue/20/solid";
-import Card from "@/components/Kanban/Card.vue";
+import Column from "@/components/Kanban/Column.vue";
 import { Task, TaskStatus } from "types";
 
 definePageMeta({
   layout: "authenticated",
+});
+
+useSeoMeta({
+  title: "Projects",
+  description: "Projects",
+  keywords: "Projects",
 });
 
 type TaskResponse = {
@@ -77,40 +55,38 @@ let categories = computed(() => {
   return data.value?.categories;
 });
 
+let hoveredCategory = ref<string | null>(null);
+
 // Allow drop function
-function allowDrop(ev: DragEvent) {
+function allowDrop(ev: DragEvent, category: TaskStatus) {
   ev.preventDefault();
+  hoveredCategory.value = category;
 }
 
-// Drag function
-function drag(ev: DragEvent, taskId: number) {
-  ev.dataTransfer!.setData("text", taskId.toString());
+function dragLeave() {
+  hoveredCategory.value = null;
 }
 
 // Drop function
 function drop(ev: DragEvent, status: TaskStatus) {
   ev.preventDefault();
   const taskId = parseInt(ev.dataTransfer!.getData("text"));
-
   const taskIndex = tasks.value?.findIndex((task) => task.id === taskId);
-
   if (taskIndex !== -1 && tasks.value && taskIndex !== undefined) {
     tasks.value[taskIndex].status = status;
   }
+  hoveredCategory.value = null;
 }
 
-function getBgColorForCategory(status: string) {
-  switch (status) {
-    case "todo":
-      return "bg-blue-500";
-    case "in-progress":
-      return "bg-yellow-500";
-    case "completed":
-      return "bg-green-500";
-    case "review":
-      return "bg-[#00a6da]";
-    default:
-      return "bg-orange-600";
+let isThrottled = false;
+
+function throttle(fn: Function, delay: number) {
+  if (!isThrottled) {
+    fn();
+    isThrottled = true;
+    setTimeout(() => {
+      isThrottled = false;
+    }, delay);
   }
 }
 </script>

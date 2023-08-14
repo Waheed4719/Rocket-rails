@@ -9,6 +9,8 @@
         @nextYear="goToNextYear"
         :currentMonth="currentMonth"
         :currentYear="currentYear"
+        :openModal="openModal"
+        @handleEventModal="toggleEventModal"
       />
       <div class="bbd bbo bbt bdq cut cxm cyy">
         <CalendarDays />
@@ -81,7 +83,9 @@
                 >{{ dateObj.day }}</time
               >
               <template v-if="getEvents(dateObj.formattedDate).length">
-                <span class="t">{{getEvents(dateObj.formattedDate).length}} events</span>
+                <span class="t"
+                  >{{ getEvents(dateObj.formattedDate).length }} events</span
+                >
                 <span class="fs lk flex yp">
                   <span class="gn jb mz ra adn aii"></span>
                   <span class="gn jb mz ra adn aii"></span>
@@ -137,6 +141,7 @@
       </div>
     </div>
   </div>
+  <Modal :open="openModal" @handleEventModal="toggleEventModal"/>
 </template>
 
 <script setup lang="ts">
@@ -144,6 +149,7 @@ import { defineComponent } from "vue";
 import CalendarHeader from "@/components/Calendar/Header.vue";
 import CalendarDays from "@/components/Calendar/Days.vue";
 import useCalendar from "@/hooks/useCalendar";
+import Modal from "@/components/Modal/index.vue";
 
 defineComponent({
   name: "CalendarComponent",
@@ -161,6 +167,11 @@ const {
   goToPreviousYear,
   goToNextYear,
 } = useCalendar();
+const openModal = ref(false);
+
+const toggleEventModal = () => {
+  openModal.value = !openModal.value;
+};
 
 const {
   nav,

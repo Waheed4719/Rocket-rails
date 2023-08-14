@@ -59,34 +59,17 @@
       </div>
       <div class="ly ckm clc cmv">
         <div class="ab">
-          <!-- <button
-            type="button"
-            class="flex items-center zt adp alj ara arq avv awb axq bbi bbo bbs bca bic"
-            id="headlessui-menu-button-1"
-            aria-haspopup="menu"
-            aria-expanded="false"
-          >
-            Month view
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-              class="hy nu rw axk"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button> -->
-          <Listbox :options="options" :selectedOption="selectedOption" @update:selectedOption="updateSelectedOption"/>
+          <Listbox
+            :options="options"
+            :selectedOption="selectedOption"
+            @update:selectedOption="updateSelectedOption"
+          />
         </div>
         <div class="ju nx tj aih"></div>
         <button
           type="button"
           class="ju adp bg-primaryColor ara arq avv awb bac bbi bin bot bou bow bpf"
+          @click="addEvent"
         >
           Add event
         </button>
@@ -118,21 +101,28 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, ref} from "vue";
+import { defineComponent, ref } from "vue";
 import Listbox from "@/components/Listbox.vue";
+import { emit } from "process";
 defineComponent({
   name: "CalendarHeader",
 });
-defineProps({
+const props = defineProps({
   currentMonth: String,
   currentYear: Number,
+  openModal: Boolean,
 });
 
 const emits = defineEmits<{
   (e: "prevMonth"): void;
   (e: "nextMonth"): void;
   (e: "getToday"): void;
+  (e: "handleEventModal"): void;
 }>();
+
+const addEvent = () => {
+  emits("handleEventModal");
+};
 
 const prevMonth = () => {
   emits("prevMonth");
@@ -162,12 +152,12 @@ const options = [
   {
     label: "Day view",
     value: "day",
-  }
-]
+  },
+];
 
 const selectedOption = ref(options[1]);
 
 const updateSelectedOption = (option: any) => {
   selectedOption.value = option;
-}
+};
 </script>
