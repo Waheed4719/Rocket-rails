@@ -4,7 +4,7 @@ import { NuxtAuthHandler } from "#auth";
 
 export default NuxtAuthHandler({
     // secret needed to run nuxt-auth in production mode (used to encrypt data)
-    secret: process.env.NUXT_SECRET,
+    secret: process.env.AUTH_SECRET,
     pages: {
       signIn: '/login'
     },
