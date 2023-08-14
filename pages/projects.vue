@@ -45,7 +45,7 @@ type TaskResponse = {
   categories: TaskStatus[];
 };
 
-const { data } = useFetch<TaskResponse>("http://localhost:3000/api/tasks");
+const { data } = useFetch<TaskResponse>("/api/tasks");
 
 let tasks = computed(() => {
   return data.value?.tasks;
