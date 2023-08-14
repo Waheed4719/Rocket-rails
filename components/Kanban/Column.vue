@@ -1,50 +1,46 @@
 <template lang="">
   <div>
-  <div class="flex flex-col gap-2 bg-gray-100 p-2 rounded-md">
-    <h3 class="font-semibold text-gray-500 text-md">
-      {{ category.substring(0, 1).toUpperCase() + category.substring(1) }}
-    </h3>
-    <div
-      :class="[
-        getBgColorForCategory(category),
-        'p-2 text-white rounded-md flex justify-between',
-      ]"
-    >
-      <h3 class="font-medium text-md">
-        {{ category.substring(0, 1).toUpperCase() + category.substring(1) }}
-      </h3>
-      <div><PlusIcon class="h-6" /></div>
-    </div>
-    <div class="flex flex-col gap-2">
-      <template
-        v-if="tasks?.filter((task) => task.status === category).length === 0"
+    <div class="flex flex-col gap-2 bg-gray-100 p-2 rounded-md">
+      <div
+        :class="[
+          getBgColorForCategory(category),
+          'p-2 text-white rounded-md flex justify-between',
+        ]"
       >
-        <p class="text-gray-400 text-sm">No tasks in this category</p>
-      </template>
-      <template v-else>
-        <Card
-          v-for="task in tasks?.filter((task) => task.status === category)"
-          :key="task.id"
-          :task="task"
-          @dragstart="(ev) => drag(ev, task.id)"
-        />
-        <div
-          v-if="hoveredCategory"
-          :class="{ 'placeholder-height': hoveredCategory }"
-         
-          :style="draggedCardHeightStyle"
-        ></div>
-      </template>
-    </div>
-    <div
-      v-show="category === 'backlog'"
-      class="border-dashed rounded-md border-gray-300 p-2 items-center flex justify-center text-gray-700 font-semibold gap-2 border cursor-pointer"
-    >
-      <PlusIcon class="h-6 text-primaryColor" />
-      <span>Add Task</span>
+        <h3 class="font-medium text-md">
+          {{ category.substring(0, 1).toUpperCase() + category.substring(1) }}
+        </h3>
+        <div><PlusIcon class="h-6" /></div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <template
+          v-if="tasks?.filter((task) => task.status === category).length === 0"
+        >
+          <p class="text-gray-400 text-sm">No tasks in this category</p>
+        </template>
+        <template v-else>
+          <Card
+            v-for="task in tasks?.filter((task) => task.status === category)"
+            :key="task.id"
+            :task="task"
+            @dragstart="(ev) => drag(ev, task.id)"
+          />
+          <div
+            v-if="hoveredCategory"
+            :class="{ 'placeholder-height': hoveredCategory }"
+            :style="draggedCardHeightStyle"
+          ></div>
+        </template>
+      </div>
+      <div
+        v-show="category === 'backlog'"
+        class="border-dashed rounded-md border-gray-300 p-2 items-center flex justify-center text-gray-700 font-semibold gap-2 border cursor-pointer"
+      >
+        <PlusIcon class="h-6 text-primaryColor" />
+        <span>Add Task</span>
+      </div>
     </div>
   </div>
-</div>
 </template>
 <script setup lang="ts">
 import { Task, TaskStatus } from "types";
