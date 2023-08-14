@@ -88,7 +88,9 @@
         <a
           href=":null"
           class="bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-200 hover:text-gray-500"
-          @click="signOut()"
+          @click="signOut({
+            callbackUrl: `/sign-in`,
+          })"
         >
           <ArrowLeftOnRectangleIcon class="w-6 h-6 shrink-0" /> Log out
         </a>

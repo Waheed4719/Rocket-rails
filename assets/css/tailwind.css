@@ -2,10 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Inter var;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Inter-roman.var.woff2") format("woff2");
+  font-named-instance: Regular;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Inter.woff2") format("woff2");
+  font-named-instance: Regular;
+}
+
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-  font-family: Helvetica Neue, Inter var, ui-sans-serif, system-ui,
+  font-family: Inter, Helvetica Neue, Inter var, ui-sans-serif, system-ui,
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
@@ -14,25 +32,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.avl {
-  font-family: Helvetica Neue, Inter var, ui-sans-serif, system-ui,
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-}
-
-
-/*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-5. Use the user's configured `sans` font-feature-settings by default.
-6. Use the user's configured `sans` font-variation-settings by default.
-*/
-
-
 
 html {
   line-height: 1.5; /* 1 */
@@ -40,14 +39,13 @@ html {
   -moz-tab-size: 4; /* 3 */
   -o-tab-size: 4;
   tab-size: 4; /* 3 */
-  font-family: Helvetica Neue, Inter var, ui-sans-serif, system-ui,
+  font-family: Inter, Helvetica Neue, Inter var, ui-sans-serif, system-ui,
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
   font-feature-settings: "cv02", "cv03", "cv04", "cv11"; /* 5 */
   font-variation-settings: normal; /* 6 */
 }
-
 
 #__nuxt {
   height: 100vh;

@@ -7,16 +7,18 @@
           'p-2 text-white rounded-md flex justify-between',
         ]"
       >
-        <h3 class="font-medium text-md">
+        <h3 class="font-semibold text-md">
           {{ category.substring(0, 1).toUpperCase() + category.substring(1) }}
         </h3>
         <div><PlusIcon class="h-6" /></div>
       </div>
       <div class="flex flex-col gap-2">
         <template
-          v-if="tasks?.filter((task) => task.status === category).length === 0"
+          v-if="tasks?.filter((task) => task.status === category).length === 0 && !hoveredCategory"
         >
-          <p class="text-gray-400 text-sm">No tasks in this category</p>
+          <p class="text-gray-400 text-sm p-4 text-center">
+            No tasks in this category
+          </p>
         </template>
         <template v-else>
           <Card
@@ -25,15 +27,16 @@
             :task="task"
             @dragstart="(ev) => drag(ev, task.id)"
           />
-          <div
-            v-if="hoveredCategory"
-            :class="{ 'placeholder-height': hoveredCategory }"
-            :style="draggedCardHeightStyle"
-          ></div>
         </template>
+        <div
+          ref="placeholder"
+          v-show="hoveredCategory"
+          :class="{ 'placeholder-height': hoveredCategory }"
+          :style="draggedCardHeightStyle"
+        ></div>
       </div>
       <div
-        v-show="category === 'backlog'"
+        v-if="category === 'backlog'"
         class="border-dashed rounded-md border-gray-300 p-2 items-center flex justify-center text-gray-700 font-semibold gap-2 border cursor-pointer"
       >
         <PlusIcon class="h-6 text-primaryColor" />
@@ -53,11 +56,12 @@ const props = defineProps<{
   hoveredCategory: boolean;
 }>();
 
-// const { draggedCardHeight } = toRefs(props);
 const draggedCardHeight = ref<number | null>(null);
+const placeholder = ref<HTMLElement | null>(null);
+
 const draggedCardHeightStyle = computed(() => {
   if (draggedCardHeight.value) {
-    return `--dragged-card-height: ${draggedCardHeight.value || 0}px`;
+    return `--dragged-card-height: ${draggedCardHeight.value}px`;
   }
   return "";
 });
