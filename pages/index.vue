@@ -11,6 +11,9 @@ import InventoryImage from "@/assets/images/inventory.webp";
 import BackgroundFeaturesImage from "@/assets/images/background-features.jpg";
 import BackgroundCallToAction from "@/assets/images/background-call-to-action.jpg";
 import ContactsImage from "/assets/images/contacts.webp";
+import ReportsImage from "@/assets/images/reports.webp";
+import ExpensesImage from "@/assets/images/expenses.webp";
+import VatReturnsImage from "@/assets/images/vat-returns.webp";
 import Avatar from "@/assets/images/avatar.webp";
 import Avatar2 from "@/assets/images/avatar-2.webp";
 import Avatar3 from "@/assets/images/avatar-3.webp";
@@ -494,10 +497,10 @@ definePageMeta({
                   <img
                     alt
                     fetchpriority="high"
-                    width="{2174}"
-                    height="{1464}"
+                    width="2174"
+                    height="1464"
                     decoding="async"
-                    data-nimg="{1}"
+                    data-nimg="1"
                     class="w-full"
                     style="
                        {
@@ -505,20 +508,19 @@ definePageMeta({
                       }
                     "
                     sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
-                    srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=640&q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=750&q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=828&q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=1080&q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=1200&q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=1920&q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=2048&q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=3840&q=75 3840w"
-                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=3840&q=75"
+                    :src="ExpensesImage"
                   />
                 </div>
               </div>
               <div
                 id="headlessui-tabs-panel-:Rta76:"
                 role="tabpanel"
-                tabIndex="{-1}"
+                tabIndex="-1"
                 hidden
                 style="
-                   {
+                   
                     display: none;
-                  }
+                  
                 "
                 data-headlessui-state
                 aria-labelledby="headlessui-tabs-tab-:R2ra76:"
@@ -547,13 +549,12 @@ definePageMeta({
                     data-nimg="1"
                     class="w-full"
                     style="
-                       {
+                       
                         color: transparent;
-                      }
+                      
                     "
                     sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
-                    srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=640&q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=750&q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=828&q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=1080&q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=1200&q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=1920&q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=2048&q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=3840&q=75 3840w"
-                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=3840&q=75"
+                    :src="VatReturnsImage"
                   />
                 </div>
               </div>
@@ -563,9 +564,9 @@ definePageMeta({
                 tabIndex="{-1}"
                 hidden
                 style="
-                   {
+                   
                     display: none;
-                  }
+                  
                 "
                 data-headlessui-state
                 aria-labelledby="headlessui-tabs-tab-:R33a76:"
@@ -587,19 +588,18 @@ definePageMeta({
                   <img
                     alt=""
                     fetchpriority="high"
-                    width="{2174}"
-                    height="{1464}"
+                    width="2174"
+                    height="1464"
                     decoding="async"
                     data-nimg="{1}"
                     class="w-full"
                     style="
-                       {
+                       
                         color: transparent;
-                      }
+                      
                     "
                     sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
-                    srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=640&q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=750&q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=828&q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=1080&q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=1200&q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=1920&q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=2048&q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=3840&q=75 3840w"
-                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=3840&q=75"
+                    :src="ReportsImage"
                   />
                 </div>
               </div>
