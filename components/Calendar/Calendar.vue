@@ -44,7 +44,7 @@
                 >
                   <a href="javascript:void(0);" class="bqb flex">
                     <p
-                      class="ui overflow-hidden text-ellipsis whitespace-nowrap font-semibold axq brn"
+                      class="ui overflow-hidden text-ellipsis whitespace-nowrap font-semibold brn text-gray-600"
                     >
                       {{ event.title }}
                     </p>
