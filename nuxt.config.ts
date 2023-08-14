@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   // devtools: { enabled: true },
   auth: {
     enableGlobalAppMiddleware: true,
+    origin: process.env.AUTH_ORIGIN,
   },
   runtimeConfig: {
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,

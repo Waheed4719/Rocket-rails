@@ -84,8 +84,6 @@ function getBgColorForCategory(status: string) {
 // Drag function
 function drag(ev: DragEvent, taskId: number) {
   ev.dataTransfer!.setData("text", taskId.toString());
-  // ev.dataTransfer!.setData("text", taskId.toString());
-  console.log(ev.dataTransfer?.getData("text"));
   const draggedCard = ev.target as HTMLElement;
   const cardHeight = draggedCard.clientHeight; // Get the card's height
   draggedCardHeight.value = cardHeight || 0; // Store the card's height
@@ -104,5 +102,6 @@ function drag(ev: DragEvent, taskId: number) {
     0.1
   ); /* Set the desired placeholder background color */
   border: 2px dashed #ccc; /* Add a dashed border for visual indication */
+  border-radius: 8px;
 }
 </style>
