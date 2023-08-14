@@ -47,3 +47,8 @@ html {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11"; /* 5 */
   font-variation-settings: normal; /* 6 */
 }
+
+
+#__nuxt {
+  height: 100vh;
+}

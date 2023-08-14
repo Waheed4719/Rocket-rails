@@ -6,7 +6,7 @@ export default NuxtAuthHandler({
     // secret needed to run nuxt-auth in production mode (used to encrypt data)
     secret: process.env.AUTH_SECRET,
     pages: {
-      signIn: '/login'
+      signIn: '/sign-in'
     },
     providers: [
         // @ts-ignore Import is exported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
