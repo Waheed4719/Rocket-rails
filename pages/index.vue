@@ -11,7 +11,7 @@ import InventoryImage from "@/assets/images/inventory.webp";
 import BackgroundFeaturesImage from "@/assets/images/background-features.jpg";
 import BackgroundCallToAction from "@/assets/images/background-call-to-action.jpg";
 import ContactsImage from "/assets/images/contacts.webp";
-import ReportsImage from "@/assets/images/reports.webp";
+import ReportsImage from "@/assets/images/reporting.webp";
 import ExpensesImage from "@/assets/images/expenses.webp";
 import VatReturnsImage from "@/assets/images/vat-returns.webp";
 import FaqBackgroundImage from "@/assets/images/faqs-background.jpg";
