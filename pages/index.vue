@@ -961,10 +961,10 @@ definePageMeta({
                     <img
                       alt=""
                       loading="lazy"
-                      width="{1688}"
-                      height="{856}"
+                      width="1688"
+                      height="856"
                       decoding="async"
-                      data-nimg="{1}"
+                      data-nimg="1"
                       class="w-full"
                       style="
                          {
