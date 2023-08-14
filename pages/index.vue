@@ -32,7 +32,7 @@ definePageMeta({
     <h1 class="text-3xl font-bold">Welcome home.</h1>
     <nuxt-link to="/sign-in" class="text-gray-500 font-semibold">Sign in</nuxt-link>
   </div> -->
-  <div class="bg-white">
+  <div class="bg-white inter">
     <header class="py-10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav class="relative z-50 flex justify-between">
