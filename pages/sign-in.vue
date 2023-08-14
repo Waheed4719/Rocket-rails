@@ -16,6 +16,7 @@ import SignInForm from "@/components/auth/SignInForm.vue";
 
 definePageMeta({
   layout: "authentication",
+  key: 'sign-in',
   auth: {
     unauthenticatedOnly: true,
     navigateAuthenticatedTo: "/dashboard",

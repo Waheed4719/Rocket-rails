@@ -30,6 +30,7 @@ import { Task, TaskStatus } from "types";
 
 definePageMeta({
   layout: "authenticated",
+  key: "projects",
 });
 
 useSeoMeta({

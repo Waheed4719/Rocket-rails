@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: "authenticated",
+  key: "events",
 });
 useSeoMeta({
   title: "Events",

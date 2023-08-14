@@ -15,6 +15,7 @@
 import SignUpForm from "@/components/auth/SignUpForm.vue";
 definePageMeta({
   layout: "authentication",
+  key: 'sign-up',
   auth: {
     unauthenticatedOnly: true,
     navigateAuthenticatedTo: "/dashboard",

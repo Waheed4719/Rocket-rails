@@ -12,7 +12,7 @@
               🚀 Rocket Rails
             </nuxt-link>
           </div>
-          <slot />
+          <slot :key="$route.path" />
         </main>
       </div>
       <div class="hidden sm:contents lg:relative lg:block lg:flex-1">

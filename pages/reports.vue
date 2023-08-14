@@ -12,6 +12,7 @@
  <script setup lang="ts">
  
  definePageMeta({
-     layout: 'authenticated'
+     layout: 'authenticated',
+      key: 'reports'
  })
  </script>
