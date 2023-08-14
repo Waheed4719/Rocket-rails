@@ -14,6 +14,7 @@ import ContactsImage from "/assets/images/contacts.webp";
 import ReportsImage from "@/assets/images/reports.webp";
 import ExpensesImage from "@/assets/images/expenses.webp";
 import VatReturnsImage from "@/assets/images/vat-returns.webp";
+import FaqBackgroundImage from "@/assets/images/faqs-background.jpg";
 import Avatar from "@/assets/images/avatar.webp";
 import Avatar2 from "@/assets/images/avatar-2.webp";
 import Avatar3 from "@/assets/images/avatar-3.webp";
@@ -1922,7 +1923,7 @@ definePageMeta({
           data-nimg="{1}"
           class="absolute left-1/2 top-0 max-w-none -translate-y-1/4 translate-x-[-30%]"
           style="color: transparent"
-          src="/_next/static/media/background-faqs.55d2e36a.jpg"
+          :src="FaqBackgroundImage"
         />
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
           <div class="mx-auto max-w-2xl lg:mx-0">
