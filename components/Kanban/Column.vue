@@ -3,40 +3,45 @@
     <div class="flex flex-col gap-2 bg-gray-100 p-2 rounded-md">
       <div
         :class="[
-          getBgColorForCategory(category),
+          getBgColorForCategory(status),
           'p-2 text-white rounded-md flex justify-between',
         ]"
       >
         <h3 class="font-semibold text-md">
-          {{ category.substring(0, 1).toUpperCase() + category.substring(1) }}
+          {{ status.substring(0, 1).toUpperCase() + status.substring(1) }}
         </h3>
-        <div><PlusIcon class="h-6" /></div>
+        <div v-if="status == 'backlog'">
+          <PlusIcon class="h-6" />
+        </div>
       </div>
       <div class="flex flex-col gap-2">
         <template
-          v-if="tasks?.filter((task) => task.status === category).length === 0 && !hoveredCategory"
+          v-if="
+            tasks?.filter((task) => task.status === status).length === 0 &&
+            !hoveredStatus
+          "
         >
           <p class="text-gray-400 text-sm p-4 text-center">
-            No tasks in this category
+            No tasks in this status
           </p>
         </template>
         <template v-else>
           <Card
-            v-for="task in tasks?.filter((task) => task.status === category)"
-            :key="task.id"
+            v-for="task in tasks?.filter((task) => task.status === status)"
+            :key="task._id"
             :task="task"
-            @dragstart="(ev) => drag(ev, task.id)"
+            @dragstart="(ev) => drag(ev, task._id)"
           />
         </template>
         <div
           ref="placeholder"
-          v-show="hoveredCategory"
-          :class="{ 'placeholder-height': hoveredCategory }"
+          v-show="hoveredStatus"
+          :class="{ 'placeholder-height': hoveredStatus }"
           :style="draggedCardHeightStyle"
         ></div>
       </div>
       <div
-        v-if="category === 'backlog'"
+        v-if="status === 'backlog'"
         class="border-dashed rounded-md border-gray-300 p-2 items-center flex justify-center text-gray-700 font-semibold gap-2 border cursor-pointer"
       >
         <PlusIcon class="h-6 text-primaryColor" />
@@ -51,9 +56,9 @@ import Card from "./Card.vue";
 import { PlusIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps<{
-  category: string;
+  status: string;
   tasks: Task[];
-  hoveredCategory: boolean;
+  hoveredStatus: boolean;
 }>();
 
 const draggedCardHeight = ref<number | null>(null);

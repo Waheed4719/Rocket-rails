@@ -87,8 +87,7 @@
                   >{{ getEvents(dateObj.formattedDate).length }} events</span
                 >
                 <span class="fs lk flex yp">
-                  <span class="gn jb mz ra adn aii"></span>
-                  <span class="gn jb mz ra adn aii"></span>
+                  <span v-for="event in getEvents(dateObj.formattedDate)" class="gn jb mz ra adn aii"></span>
                 </span>
               </template>
             </button>

@@ -10,18 +10,20 @@
     class="grid gap-4 px-8"
     style="grid-template-columns: repeat(6, minmax(300px, 1fr))"
   >
+    <ClientOnly>
     <Column
-      v-for="category in categories"
+      v-for="status in statuses"
       class="flex flex-col gap-2 p-2 rounded-md"
-      @drop="drop($event, category)"
-      @dragover="allowDrop($event, category)"
+      @drop="drop($event, status)"
+      @dragover="allowDrop($event, status)"
       @dragleave="throttle(() => dragLeave(), 300)"
-      :category="category"
-      :key="category"
-      :tasks="tasks?.filter((task) => task.status === category) || []"
-      :hoveredCategory="hoveredCategory == category"
+      :status="status"
+      :key="status"
+      :tasks="tasks?.filter((task) => task.status === status) || []"
+      :hoveredStatus="hoveredStatus == status"
     >
     </Column>
+    </ClientOnly>
   </div>
 </template>
 <script setup lang="ts">
@@ -41,40 +43,61 @@ useSeoMeta({
 
 type TaskResponse = {
   tasks: Task[];
-  categories: TaskStatus[];
+  statuses: TaskStatus[];
 };
+let tasks = reactive<Task[]>([]);
+let statuses = reactive<TaskStatus[]>([]);
 
 const { data } = useFetch<TaskResponse>("/api/tasks");
 
-let tasks = computed(() => {
-  return data.value?.tasks;
+watchEffect(() => {
+  if (data.value) {
+    tasks.splice(0, tasks.length, ...(data.value?.tasks || []));
+    statuses.splice(0, statuses.length, ...(data.value?.statuses || []));
+  }
 });
 
-let categories = computed(() => {
-  return data.value?.categories;
-});
-
-let hoveredCategory = ref<string | null>(null);
+let hoveredStatus = ref<string | null>(null);
 
 // Allow drop function
-function allowDrop(ev: DragEvent, category: TaskStatus) {
+function allowDrop(ev: DragEvent, status: TaskStatus) {
   ev.preventDefault();
-  hoveredCategory.value = category;
+  hoveredStatus.value = status;
 }
 
 function dragLeave() {
-  hoveredCategory.value = null;
+  hoveredStatus.value = null;
 }
 
 // Drop function
-function drop(ev: DragEvent, status: TaskStatus) {
+async function drop(ev: DragEvent, status: TaskStatus) {
   ev.preventDefault();
-  const taskId = parseInt(ev.dataTransfer!.getData("text"));
-  const taskIndex = tasks.value?.findIndex((task) => task.id === taskId);
-  if (taskIndex !== -1 && tasks.value && taskIndex !== undefined) {
-    tasks.value[taskIndex].status = status;
+  const taskId = ev.dataTransfer!.getData("text");
+  const taskIndex = tasks?.findIndex((task) => task._id === taskId);
+  const prevTask = { ...tasks[taskIndex] };
+  if (taskIndex !== -1 && tasks && taskIndex !== undefined) {
+    tasks[taskIndex].status = status;
   }
-  hoveredCategory.value = null;
+  hoveredStatus.value = null;
+
+  // make an api call
+  const response = await fetch("/api/tasks", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      taskId,
+      status,
+    }),
+  });
+  if (!response.ok) {
+    console.log("error");
+    console.log(tasks[taskIndex], prevTask);
+    setTimeout(() => {
+      tasks[taskIndex].status = prevTask.status;
+    }, 1500);
+  }
 }
 
 let isThrottled = false;

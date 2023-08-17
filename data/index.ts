@@ -2,7 +2,7 @@ import { Task } from "types"
 
 export const tasks: Task[] = [
     {
-      "id": 1,
+      "_id": "1",
       "title": "Design Wireframes",
       "description": "Create wireframe designs for the new mobile app",
       "status": "backlog",
@@ -11,7 +11,7 @@ export const tasks: Task[] = [
       "priority": "High"
     },
     {
-      "id": 2,
+      "_id": "2",
       "title": "Implement User Authentication",
       "description": "Implement user authentication and registration functionality",
       "status": "todo",
@@ -20,7 +20,7 @@ export const tasks: Task[] = [
       "priority": "Medium"
     },
     {
-      "id": 3,
+      "_id": "3",
       "title": "Develop Backend APIs",
       "description": "Build backend APIs for data retrieval and manipulation",
       "status": "in-progress",
@@ -29,7 +29,7 @@ export const tasks: Task[] = [
       "priority": "High"
     },
     {
-      "id": 4,
+      "_id": "4",
       "title": "Code Review",
       "description": "Review and refactor code for quality assurance",
       "status": "review",
@@ -38,7 +38,7 @@ export const tasks: Task[] = [
       "priority": "Medium"
     },
     {
-      "id": 5,
+      "_id": "5",
       "title": "Testing and Bug Fixes",
       "description": "Perform thorough testing and fix any identified bugs",
       "status": "completed",
@@ -47,7 +47,7 @@ export const tasks: Task[] = [
       "priority": "Low"
     },
     {
-      "id": 6,
+      "_id": "6",
       "title": "Gather User Feedback",
       "description": "Collect feedback from beta testers and users",
       "status": "backlog",
@@ -56,7 +56,7 @@ export const tasks: Task[] = [
       "priority": "Medium"
     },
     {
-      "id": 7,
+      "_id": "7",
       "title": "Improve UI/UX",
       "description": "Enhance user interface and user experience based on feedback",
       "status": "todo",
@@ -65,7 +65,7 @@ export const tasks: Task[] = [
       "priority": "High"
     },
     {
-      "id": 8,
+      "_id": "8",
       "title": "Optimize Performance",
       "description": "Optimize app performance for better responsiveness",
       "status": "in-progress",
@@ -74,7 +74,7 @@ export const tasks: Task[] = [
       "priority": "Medium"
     },
     {
-      "id": 9,
+      "_id": "9",
       "title": "Prepare Documentation",
       "description": "Create documentation for developers and users",
       "status": "review",
@@ -83,7 +83,7 @@ export const tasks: Task[] = [
       "priority": "High"
     },
     {
-      "id": 10,
+      "_id": "10",
       "title": "Release to App Store",
       "description": "Prepare and submit the app for release on app stores",
       "status": "completed",
@@ -92,7 +92,7 @@ export const tasks: Task[] = [
       "priority": "High"
     },
     {
-      "id": 11,
+      "_id": "11",
       "title": "Task 11",
       "description": "Description for Task 11",
       "status": "backlog",
@@ -101,7 +101,7 @@ export const tasks: Task[] = [
       "priority": "Medium"
     },
     {
-      "id": 12,
+      "_id": "12",
       "title": "Task 12",
       "description": "Description for Task 12",
       "status": "completed",

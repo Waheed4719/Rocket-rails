@@ -23,5 +23,4 @@ useSeoMeta({
   <div class="px-8">
     <Calendar />
   </div>
-  <div id="modal-container"></div>
 </template>

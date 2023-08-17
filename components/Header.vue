@@ -1,9 +1,9 @@
 <template>
   <div
-    class="lg:hidden ac di ee flex ng shrink-0 items-center aab afa afp bg-white ard bbi cbu cex ddc"
+    class="lg:hidden top-0 z-5 sticky flex h-16 shrink-0 items-center gap-x-4 border-b afp bg-white px-4 bbi cbu cex ddc"
   >
-    <button type="button" class="fo aqm axo cux">
-      <span class="t">Open sidebar</span>
+    <button type="button" class="-m-2.5 p-2.5 axo lg:hidden">
+      <span class="sr-only">Open sidebar</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -20,16 +20,16 @@
         ></path>
       </svg>
     </button>
-    <div class="nx tj aig cux" aria-hidden="true"></div>
-    <div class="flex uh aab acz czt">
-      <form class="ab flex uh" action="#" method="GET">
-        <label htmlFor="search-field" class="t">Search</label>
+    <div class="h-6 w-px bg-gray-300 lg:hidden" aria-hidden="true"></div>
+    <div class="flex flex-1 gap-x-4 items-stretch lg:gap-x-6">
+      <form class="relative flex flex-1" action="#" method="GET">
+        <label htmlFor="search-field" class="sr-only">Search</label>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
           aria-hidden="true"
-          class="u aa an cb pc rw axk"
+          class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
         >
           <path
             fillRule="evenodd"
@@ -39,7 +39,7 @@
         </svg>
         <input
           id="search-field"
-          class="lp pc ti aev ari atm ato axq bfy bmx chy"
+          class="block w-full h-full border-0 py-0 pl-8 pr-0 axq bfy bmx text-3.6"
           placeholder="Search..."
           type="search"
           name="search"
@@ -47,9 +47,9 @@
           data-ms-editor="true"
         />
       </form>
-      <div class="flex items-center aab czt">
-        <button type="button" class="fo aqm axk bks">
-          <span class="t">View notifications</span>
+      <div class="flex items-center gap-x-4 czt">
+        <button type="button" class="-m-2.5 p-2.5 axk bks">
+          <span class="sr-only">View notifications</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -66,23 +66,23 @@
             ></path>
           </svg>
         </button>
-        <div class="ly cur cvh cwv dci" aria-hidden="true"></div>
-        <div class="ab" data-headlessui-state="">
+        <div class="hidden cur cvh cwv dci" aria-hidden="true"></div>
+        <div class="relative" data-headlessui-state="">
           <button
-            class="fm flex items-center aqi"
+            class="-m-1.5 flex items-center p-1.5"
             id="headlessui-menu-button-1"
             type="button"
             aria-haspopup="menu"
             aria-expanded="false"
             data-headlessui-state=""
           >
-            <span class="t">Open user menu</span>
+            <span class="sr-only">Open user menu</span>
             <img
-              class="ob se adn ail"
+              class="h-8 w-8 rounded-full ail"
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
               alt=""
             />
-            <span class="ly cut czb">
+            <span class="hidden lg:flex items-center">
               <span
                 class="js text-sm font-semibold leading-6 axq"
                 aria-hidden="true"
