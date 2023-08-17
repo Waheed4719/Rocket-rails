@@ -1,8 +1,6 @@
 import { H3Event } from "h3";
-import { tasks } from "../../data";
 import { Task } from "../../types";
 import TaskModel, {TaskDocument} from "../models/Task";
-import { Document } from "mongoose";
 
 export default defineEventHandler(async (event: H3Event) => {
   if (event.node.req.method === "GET") {
