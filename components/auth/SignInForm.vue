@@ -4,7 +4,7 @@ const { signIn } = useAuth();
 const submitForm = (event) => {
   event.preventDefault();
   signIn("credentials", {
-    username: event.target.email.value,
+    email: event.target.email.value,
     password: event.target.password.value,
     callbackUrl: "/events",
   });

@@ -20,13 +20,58 @@
   font-named-instance: Regular;
 }
 
+@font-face {
+  font-family: Neue-haas-grotesk;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/neue-haas/Medium-Web.woff2") format("woff2");
+  font-named-instance: Medium;
+}
+
+@font-face {
+  font-family: Neue-haas-grotesk;
+  font-style: bold;
+  font-weight: 500 900;
+  font-display: swap;
+  src: url("../fonts/neue-haas/Bold-Web.woff2") format("woff2");
+  font-named-instance: Bold;
+}
+
+@font-face {
+  font-family: SF-Pro;
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("../fonts/sf-pro/regular.OTF") format("woff2");
+  font-named-instance: Regular;
+}
+
+@font-face {
+  font-family: SF-Pro;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/sf-pro/medium.OTF") format("woff2");
+  font-named-instance: Bold;
+}
+
+@font-face {
+  font-family: SF-Pro;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/sf-pro/bold.OTF") format("woff2");
+  font-named-instance: Bold;
+}
+
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-  font-family: Helvetica Neue, ui-sans-serif, system-ui,
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: SF-Pro, Helvetica Neue, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,7 +83,7 @@ body {
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
 }
-.helvetica-nueu {
+.helvetica-neue {
   font-family: Helvetica Neue, ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -50,12 +95,9 @@ html {
   -moz-tab-size: 4; /* 3 */
   -o-tab-size: 4;
   tab-size: 4; /* 3 */
-  /* font-family: Inter, Helvetica Neue, Inter var, ui-sans-serif, system-ui,
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji"; 
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11"; 
-  font-variation-settings: normal;  */
+}
+* {
+  box-sizing: border-box;
 }
 
 #__nuxt {

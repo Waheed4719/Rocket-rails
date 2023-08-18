@@ -10,7 +10,7 @@
         <h3 class="font-semibold text-md">
           {{ status.substring(0, 1).toUpperCase() + status.substring(1) }}
         </h3>
-        <div v-if="status == 'backlog'">
+        <div>
           <PlusIcon class="h-6" />
         </div>
       </div>
@@ -41,7 +41,6 @@
         ></div>
       </div>
       <div
-        v-if="status === 'backlog'"
         class="border-dashed rounded-md border-gray-300 p-2 items-center flex justify-center text-gray-700 font-semibold gap-2 border cursor-pointer"
       >
         <PlusIcon class="h-6 text-primaryColor" />

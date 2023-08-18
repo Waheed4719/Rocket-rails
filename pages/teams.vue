@@ -14,4 +14,10 @@ definePageMeta({
   layout: "authenticated",
   key: "teams",
 });
+
+useSeoMeta({
+  title: "Teams",
+  description: "Teams",
+  keywords: "Teams",
+});
 </script>

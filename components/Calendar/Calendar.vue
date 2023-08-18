@@ -12,10 +12,10 @@
         :openModal="openModal"
         @handleEventModal="toggleEventModal"
       />
-      <div class="bbd bbo bbt bdq cut cxm cyy">
+      <div class="bbd bbo bbt bdq cut flex-1 cyy">
         <CalendarDays />
-        <div class="flex aig avx awk axo cxm">
-          <div class="ly ti cuv cyq czm" :style="gridStyle">
+        <div class="flex aig text-xs leading-6 axo flex-1">
+          <div class="hidden w-full lg:grid cyq lg:gap-px" :style="gridStyle">
             <div
               v-for="(dateObj, index) in daysArray"
               :key="dateObj.formattedDate"
@@ -30,14 +30,14 @@
             >
               <time
                 :class="{
-                  'flex h-6 w-6 yz ze ads bg-primaryColor awg bah':
+                  'flex h-6 w-6 justify-center gap-3 rounded-xl bg-primaryColor text-white':
                     currentFormattedDate == dateObj.formattedDate,
                 }"
                 :datetime="dateObj.formattedDate"
               >
                 {{ dateObj.day }}
               </time>
-              <ol class="kw">
+              <ol class="mt-2">
                 <li
                   v-for="event in getEvents(dateObj.formattedDate)"
                   :key="event.date"
@@ -50,7 +50,7 @@
                     </p>
                     <time
                       dateTime="2022-01-03T10:00"
-                      class="jr ly uj axm brn diq"
+                      class="jr hidden uj axm brn diq"
                     >
                       {{ formatTime(event.date) }}
                     </time>
@@ -59,7 +59,7 @@
               </ol>
             </div>
           </div>
-          <div class="dx lw ti yh zp cux" :style="gridStyle">
+          <div class="dx lw w-full yh zp cux" :style="gridStyle">
             <button
               type="button"
               v-for="(dateObj, index) in daysArray"
@@ -111,7 +111,7 @@
           >
             <div class="ui">
               <p class="awb axq">{{ event.title }}</p>
-              <time :datetime="event.date" class="kw flex yu axo">
+              <time :datetime="event.date" class="mt-2 flex yu axo">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"

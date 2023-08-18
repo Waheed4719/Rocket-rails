@@ -21,7 +21,6 @@ const TaskSchema = new Schema<TaskDocument, TaskModel>({
   },
   description: {
     type: String,
-    required: true,
   },
   status: {
     type: String,

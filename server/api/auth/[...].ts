@@ -1,6 +1,8 @@
+import UserModel from './../../models/User';
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GithubProvider from 'next-auth/providers/github'
 import { NuxtAuthHandler } from "#auth";
+import * as bcrypt from 'bcrypt';
 
 export default NuxtAuthHandler({
     // secret needed to run nuxt-auth in production mode (used to encrypt data)
@@ -17,13 +19,12 @@ export default NuxtAuthHandler({
         // @ts-ignore Import is exported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
         CredentialsProvider.default({
             name: 'Credentials',
-            authorize (credentials: any) {
+            async authorize (credentials: any) {
               console.log('got here', credentials)
 
-              const user = { id: '1', name: 'J Smith', username: 'test@email.com', password: 'test1234', image: 'https://avatars.githubusercontent.com/u/25911230?v=4' }
-
-              if (credentials?.username === user.username && credentials?.password === user.password) {
-                
+              const user = await UserModel.findOne({email: credentials?.email})
+              console.log('user', user)
+              if (user && bcrypt.compareSync(credentials.password, user.password)) {
                 return user
               } else {
                 // eslint-disable-next-line no-console

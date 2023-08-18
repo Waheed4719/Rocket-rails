@@ -2,7 +2,11 @@
   <div
     class="lg:hidden top-0 z-5 sticky flex h-16 shrink-0 items-center gap-x-4 border-b afp bg-white px-4 bbi cbu cex ddc"
   >
-    <button type="button" class="-m-2.5 p-2.5 axo lg:hidden">
+    <button
+      type="button"
+      class="-m-2.5 p-2.5 axo lg:hidden"
+      @click="handleSidebar"
+    >
       <span class="sr-only">Open sidebar</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -109,3 +113,18 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+const props = defineProps({
+  sidebarOpen: Boolean,
+  dropdownOpen: Boolean,
+});
+
+const emits = defineEmits<{
+  (e: "handleSidebar"): void;
+}>();
+
+const handleSidebar = () => {
+  console.log('clicked')
+  emits("handleSidebar");
+};
+</script>

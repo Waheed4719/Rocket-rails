@@ -15,11 +15,11 @@
   </div>
 
   <div
-    class="rounded-lg px-2 flex justify-between bg-white items-center h-[40px] gap-2"
+    class="rounded-lg px-2 flex justify-between bg-white items-center h-[40px] shrink-0 gap-2 border border-gray-300"
   >
-    <div class="flex items-center text-gray-500 gap-2">
+    <div class="flex items-center text-gray-500 gap-2 hover:text-black">
       <MagnifyingGlassIcon class="h-5" /><button
-        class="border-none text-sm flex flex-1 placeholder:text-gray-400 outline-none font-semibold w-[45%]"
+        class="border-none text-sm flex flex-1 outline-none font-semibold w-[45%]"
         placeholder="Quick find"
       >
         Quick find
@@ -46,7 +46,7 @@
                 'bg-primaryColor text-white':
                   currentRoute.name == route.name ||
                   currentRoute.path == route.path,
-                'text-gray-600 hover:bg-gray-200 hover:text-gray-500':
+                'text-gray-600 hover:bg-gray-200 hover:text-black':
                   currentRoute.path != route.path,
                 'bqb flex gap-x-3 rounded-xl p-2 text-sm leading-6 font-semibold group ': true,
               }"
@@ -80,17 +80,24 @@
       <li class="mt-auto flex justify-between">
         <a
           href=":null"
-          class="bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-200 hover:text-gray-500"
+          :class="{
+            'bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-200 hover:text-black': true,
+            'bg-primaryColor text-white':
+              currentRoute.name == 'settings' ||
+              currentRoute.path == '/settings',
+          }"
         >
           <Cog6ToothIcon class="w-6 h-6 shrink-0" />
           Settings
         </a>
         <a
           href=":null"
-          class="bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-200 hover:text-gray-500"
-          @click="signOut({
-            callbackUrl: `/sign-in`,
-          })"
+          class="bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-200 hover:text-black"
+          @click="
+            signOut({
+              callbackUrl: `/sign-in`,
+            })
+          "
         >
           <ArrowLeftOnRectangleIcon class="w-6 h-6 shrink-0" /> Log out
         </a>

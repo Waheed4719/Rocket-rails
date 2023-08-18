@@ -14,4 +14,10 @@ definePageMeta({
   layout: "authenticated",
   key: "documents",
 });
+
+useSeoMeta({
+  title: "Documents",
+  description: "Documents",
+  keywords: "Documents",
+});
 </script>

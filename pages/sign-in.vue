@@ -22,5 +22,4 @@ definePageMeta({
     navigateAuthenticatedTo: "/dashboard",
   },
 });
-const { signIn } = useAuth();
 </script>

@@ -14,4 +14,10 @@ definePageMeta({
   layout: "authenticated",
   key: "dashboard",
 });
+
+useSeoMeta({
+  title: "Dashboard",
+  description: "Dashboard",
+  keywords: "Dashboard",
+});
 </script>
