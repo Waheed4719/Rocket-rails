@@ -1,28 +1,31 @@
 <template>
-  <div class="mb-4 px-8">
+  <div class="px-8">
     <h2 class="text-gray-600 font-semibold mb-1 text-md">🚀 Client Projects</h2>
     <div class="flex justify-between">
       <h1 class="text-3xl font-bold">Finance Mobile App</h1>
     </div>
   </div>
-  <div class="h-[1px] w-full bg-gray-200 my-5"></div>
+  <!-- <div class="h-[1px] w-full bg-gray-200 my-5"></div> -->
+
+    <KanbanTabs />
+
   <div
-    class="grid gap-4 px-8"
-    style="grid-template-columns: repeat(6, minmax(300px, 1fr))"
+    class="grid px-8"
+    style="grid-template-columns: repeat(6, minmax(320px, 1fr))"
   >
     <ClientOnly>
-    <Column
-      v-for="status in statuses"
-      class="flex flex-col gap-2 p-2 rounded-md"
-      @drop="drop($event, status)"
-      @dragover="allowDrop($event, status)"
-      @dragleave="throttle(() => dragLeave(), 300)"
-      :status="status"
-      :key="status"
-      :tasks="tasks?.filter((task) => task.status === status) || []"
-      :hoveredStatus="hoveredStatus == status"
-    >
-    </Column>
+      <Column
+        v-for="status in statuses"
+        class="flex flex-col gap-2 p-2 rounded-md w-full"
+        @drop="drop($event, status)"
+        @dragover="allowDrop($event, status)"
+        @dragleave="throttle(() => dragLeave(), 300)"
+        :status="status"
+        :key="status"
+        :tasks="tasks?.filter((task) => task.status === status) || []"
+        :hoveredStatus="hoveredStatus == status"
+      >
+      </Column>
     </ClientOnly>
   </div>
 </template>

@@ -8,13 +8,16 @@ module.exports = {
     "./nuxt.config.{js,ts}",
     'node_modules/tailvue/dist/tailvue.es.js'
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
         primaryColor: "rgba(79, 70, 229, 1)",
       },
     },
+  },
+  variants: {
+    opacity: ({ after }) => after(['disabled'])
   },
   plugins: [],
 };

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { signIn } = useAuth();
 
+
 const submitForm = (event) => {
   event.preventDefault();
   signIn("credentials", {

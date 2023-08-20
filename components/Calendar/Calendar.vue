@@ -11,89 +11,12 @@
         :currentYear="currentYear"
         :openModal="openModal"
         @handleEventModal="toggleEventModal"
+        :selectedView="selectedView"
+        @handleViewChange="handleViewChange"
       />
-      <div class="bbd bbo bbt bdq cut flex-1 cyy">
-        <CalendarDays />
-        <div class="flex aig text-xs leading-6 axo flex-1">
-          <div class="hidden w-full lg:grid cyq lg:gap-px" :style="gridStyle">
-            <div
-              v-for="(dateObj, index) in daysArray"
-              :key="dateObj.formattedDate"
-              :class="{
-                'ail axm relative px-3 py-2':
-                  index + 1 <= previousMonthPaddingDays ||
-                  index + 1 > previousMonthPaddingDays + daysInMonth,
-                'bg-white relative px-3 py-2':
-                  index + 1 > previousMonthPaddingDays &&
-                  index + 1 <= previousMonthPaddingDays + daysInMonth,
-              }"
-            >
-              <time
-                :class="{
-                  'flex h-6 w-6 justify-center gap-3 rounded-xl bg-primaryColor text-white':
-                    currentFormattedDate == dateObj.formattedDate,
-                }"
-                :datetime="dateObj.formattedDate"
-              >
-                {{ dateObj.day }}
-              </time>
-              <ol class="mt-2">
-                <li
-                  v-for="event in getEvents(dateObj.formattedDate)"
-                  :key="event.date"
-                >
-                  <a href="javascript:void(0);" class="bqb flex">
-                    <p
-                      class="ui overflow-hidden text-ellipsis whitespace-nowrap font-semibold brn text-gray-600"
-                    >
-                      {{ event.title }}
-                    </p>
-                    <time
-                      dateTime="2022-01-03T10:00"
-                      class="jr hidden uj axm brn diq"
-                    >
-                      {{ formatTime(event.date) }}
-                    </time>
-                  </a>
-                </li>
-              </ol>
-            </div>
-          </div>
-          <div class="dx lw w-full yh zp cux" :style="gridStyle">
-            <button
-              type="button"
-              v-for="(dateObj, index) in daysArray"
-              :key="dateObj.formattedDate"
-              :class="{
-                'ail axm relative px-3 py-2':
-                  index + 1 <= previousMonthPaddingDays ||
-                  index + 1 > previousMonthPaddingDays + daysInMonth,
-                'bg-white relative px-3 py-2':
-                  index + 1 > previousMonthPaddingDays &&
-                  index + 1 <= previousMonthPaddingDays + daysInMonth,
-                'flex justify-center items-center flex-col': true,
-              }"
-            >
-              <time
-                :datetime="dateObj.formattedDate"
-                :class="{
-                  'flex h-6 w-6 yz ze ads bg-primaryColor awg bah':
-                    currentFormattedDate == dateObj.formattedDate,
-                }"
-                >{{ dateObj.day }}</time
-              >
-              <template v-if="getEvents(dateObj.formattedDate).length">
-                <span class="t"
-                  >{{ getEvents(dateObj.formattedDate).length }} events</span
-                >
-                <span class="fs lk flex yp">
-                  <span v-for="event in getEvents(dateObj.formattedDate)" class="gn jb mz ra adn aii"></span>
-                </span>
-              </template>
-            </button>
-          </div>
-        </div>
-      </div>
+      
+      <MonthView v-if="selectedView.value=='month'" :events="events" :daysArray="daysArray" :previousMonthPaddingDays="previousMonthPaddingDays" :daysInMonth="daysInMonth" :currentFormattedDate="currentFormattedDate" />
+      <DayView v-if="selectedView.value=='day'"/>
       <div class="px-4 py-10 md:px-6 cux">
         <ol
           class="relative aca overflow-hidden ado bg-white avv bbd bbo bbt bdq"
@@ -149,6 +72,9 @@ import CalendarHeader from "@/components/Calendar/Header.vue";
 import CalendarDays from "@/components/Calendar/Days.vue";
 import useCalendar from "@/hooks/useCalendar";
 import Modal from "@/components/Modal/index.vue";
+import MonthView from "./MonthView.vue";
+import DayView from "./DayView.vue";
+
 
 defineComponent({
   name: "CalendarComponent",
@@ -202,6 +128,27 @@ const events = [
   },
 ];
 
+const options = [
+  {
+    label: "Year view",
+    value: "year",
+  },
+  {
+    label: "Month view",
+    value: "month",
+  },
+  {
+    label: "Week view",
+    value: "week",
+  },
+  {
+    label: "Day view",
+    value: "day",
+  },
+];
+
+const selectedView = ref(options[1]);
+
 const checkIfDateMatches = (date: string, dateToCheckAgainst: string) => {
   // Create a Date object for the current date
   var currentDate = new Date(date);
@@ -244,6 +191,11 @@ const formatTime = (date: string) => {
     hour12: true,
   });
 };
+
+
+const handleViewChange = (option: {label: string, value: string}) => {
+  selectedView.value = option
+}
 </script>
 <style lang="css">
 @import "~/assets/css/calendar.css";
