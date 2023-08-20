@@ -1,14 +1,11 @@
 <template>
   <div class="px-8">
-    <h2 class="text-gray-600 font-semibold mb-1 text-md">🚀 Client Projects</h2>
+    <h2 class="text-gray-700 font-semibold mb-1 text-md">🚀 Client Projects</h2>
     <div class="flex justify-between">
-      <h1 class="text-3xl font-bold">Finance Mobile App</h1>
+      <h1 class="text-3xl font-bold text-gray-700">Finance Mobile App</h1>
     </div>
   </div>
-  <!-- <div class="h-[1px] w-full bg-gray-200 my-5"></div> -->
-
     <KanbanTabs />
-
   <div
     class="grid px-8"
     style="grid-template-columns: repeat(6, minmax(320px, 1fr))"

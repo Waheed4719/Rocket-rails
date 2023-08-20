@@ -1,12 +1,21 @@
 import { H3Event } from "h3";
-import { Task } from "../../types";
 import TaskModel, {TaskDocument} from "../models/Task";
+import { getServerSession  } from "#auth";
+import { UserDocument } from "../models/User";
 
 export default defineEventHandler(async (event: H3Event) => {
-  if (event.node.req.method === "GET") {
-    const tasks: Task[] = await TaskModel.find();
 
-    const statuses = tasks.reduce((acc: string[], curr: Task) => {
+  const session = await getServerSession(event);
+  if(session?.user === undefined) {
+    return {
+      message: 'Not authorized'
+    };
+  }
+  const user = session.user as UserDocument
+  if (event.node.req.method === "GET") {
+    const tasks: TaskDocument[] = await TaskModel.find({user: user._id});
+
+    const statuses = tasks.reduce((acc: string[], curr: TaskDocument) => {
       if (!acc.includes(curr.status)) {
         acc.push(curr.status);
       }
@@ -39,9 +48,9 @@ export default defineEventHandler(async (event: H3Event) => {
   }
 
   else if (event.node.req.method === "POST") {
-    const { title, description, category, priority } = await readBody(event);
+    const { title, description, category, priority, user } = await readBody(event);
 
-    let task: TaskDocument | null = await TaskModel.create({title, description, category, priority});
+    let task: TaskDocument | null = await TaskModel.create({title, description, category, priority, user});
     
     if(!task) {
       throw createError({

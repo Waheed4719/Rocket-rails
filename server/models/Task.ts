@@ -1,6 +1,7 @@
-import { Document, Model, model, Schema } from 'mongoose';
+import { Document, Model, model, ObjectId, Schema } from 'mongoose';
 
 export interface Task {
+  user: ObjectId;
   title: string;
   description: string;
   status: string;
@@ -15,6 +16,10 @@ export interface TaskModel extends Model<TaskDocument> {}
 
 // This is your Mongoose Task model
 const TaskSchema = new Schema<TaskDocument, TaskModel>({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
+  },
   title: {
     type: String,
     required: true,

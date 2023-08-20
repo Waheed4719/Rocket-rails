@@ -1,8 +1,9 @@
-import UserModel from './../../models/User';
+import UserModel, { UserDocument } from './../../models/User';
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GithubProvider from 'next-auth/providers/github'
 import { NuxtAuthHandler } from "#auth";
 import * as bcrypt from 'bcrypt';
+import { ISODateString, Session } from 'next-auth';
 
 export default NuxtAuthHandler({
     // secret needed to run nuxt-auth in production mode (used to encrypt data)
@@ -22,7 +23,7 @@ export default NuxtAuthHandler({
             async authorize (credentials: any) {
               console.log('got here', credentials)
 
-              const user = await UserModel.findOne({email: credentials?.email})
+              const user: UserDocument | null = await UserModel.findOne({email: credentials?.email})
               console.log('user', user)
               if (user && bcrypt.compareSync(credentials.password, user.password)) {
                 return user
@@ -36,5 +37,18 @@ export default NuxtAuthHandler({
               }
             }
         })
-    ]
+    ],
+    callbacks: {
+      async jwt({token, user}) {
+        if (user) {
+          token.user = user;
+        }
+        return token;
+      },
+      async session({session, token}): Promise<Session | {user: UserDocument, expires: ISODateString}> {
+        session.user = token.user as UserDocument;
+        return session;
+      },
+      
+    }
 })

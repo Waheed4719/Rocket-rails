@@ -1,8 +1,8 @@
 <template>
   <div class="mb-4 px-8">
-    <h2 class="text-gray-600 font-semibold mb-1 text-md">🫂 Teams</h2>
+    <h2 class="text-gray-700 font-semibold mb-1 text-md">🫂 Teams</h2>
     <div class="flex justify-between">
-      <h1 class="text-3xl font-bold">My Teams</h1>
+      <h1 class="text-3xl font-bold text-gray-700">My Teams</h1>
 
       <div></div>
     </div>
