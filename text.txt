@@ -15,8 +15,15 @@
         </div>
       </div>
       <div class="flex flex-col gap-2">
-        <template v-if="tasks.length === 0 && !hoveredStatus">
-          <p class="text-gray-400 text-sm p-4 text-center">No tasks</p>
+        <template
+          v-if="
+            tasks?.filter((task) => task.status === status).length === 0 &&
+            !hoveredStatus
+          "
+        >
+          <p class="text-gray-400 text-sm p-4 text-center">
+            No tasks in this status
+          </p>
         </template>
         <template v-else>
           <Card
@@ -28,7 +35,7 @@
         </template>
         <div
           ref="placeholder"
-          v-show="currentDraggedCard !== status && hoveredStatus"
+          v-show="hoveredStatus"
           :class="{ 'placeholder-height': hoveredStatus }"
           :style="{ height: placeholderCardHeight + 'px' }"
         ></div>
@@ -46,27 +53,29 @@
 import { Task, TaskStatus } from "types";
 import Card from "./Card.vue";
 import { PlusIcon } from "@heroicons/vue/20/solid";
+// :style="{ height: placeholderCardHeight + 'px' }"
 
-defineProps<{
+const props = defineProps<{
   status: string;
   tasks: Task[];
   hoveredStatus: boolean;
   placeholderCardHeight: number;
-  currentDraggedCard: TaskStatus | null;
 }>();
+
+const draggedCardHeight = ref<number | null>(null);
+const placeholder = ref<HTMLElement | null>(null);
+
 
 function getBgColorForCategory(status: string) {
   switch (status) {
-    case "Todo":
+    case "todo":
       return "bg-blue-500";
-    case "In Progress":
+    case "in-progress":
       return "bg-yellow-500";
-    case "Completed":
+    case "completed":
       return "bg-green-500";
-    case "Review":
+    case "review":
       return "bg-[#00a6da]";
-    case "Backlog":
-      return "bg-orange-600";
     default:
       return "bg-orange-600";
   }
@@ -74,11 +83,16 @@ function getBgColorForCategory(status: string) {
 
 // Drag function
 function drag(ev: DragEvent, taskId: number) {
+  console.log('child',ev)
   ev.dataTransfer!.setData("text", taskId.toString());
 }
 </script>
 <style scoped>
 .placeholder-height {
+  min-height: var(
+    --dragged-card-height,
+    100px
+  ); /* Set the default and minimum height */
   background-color: rgba(
     0,
     0,

@@ -1,64 +1,28 @@
-# Nuxt 3 Minimal Starter
+#Rocket Rails (Task and Team Management Platform) (In progress)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+##Technologies used
 
-## Setup
+* Nuxt JS 3 (Vue 3)
+* Tailwind CSS
+* Serverless Functions
+* MongoDB (Mongoose ORM)
 
-Make sure to install the dependencies:
+##Project Page
 
-```bash
-# npm
-npm install
+![Project](./assets/images/project-page.png)
 
-# pnpm
-pnpm install
+-Kanban/List View to manage and assign tasks to team members with respect to priority and categories
 
-# yarn
-yarn install
-```
 
-## Development Server
+##Event Page
 
-Start the development server on `http://localhost:3000`:
+![Events(Month View)](./assets/images/event-page-month.png "Evens (Month view)")
+![Events(Day View)](./assets/images/event-page-day.png "Day view")
 
-```bash
-# npm
-npm run dev
+-View/Create/Delete events from your timeline
+-Google/Outlook map integration
+-Month/Day View (Year/Week view coming soon!)
 
-# pnpm
-pnpm run dev
 
-# yarn
-yarn dev
-```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-"# Rocket-rails" 
+##Other Pages coming soon

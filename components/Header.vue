@@ -114,7 +114,7 @@
   </div>
 </template>
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   sidebarOpen: Boolean,
   dropdownOpen: Boolean,
 });
@@ -124,7 +124,6 @@ const emits = defineEmits<{
 }>();
 
 const handleSidebar = () => {
-  console.log('clicked')
   emits("handleSidebar");
 };
 </script>

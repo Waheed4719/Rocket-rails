@@ -38,7 +38,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { CalendarDaysIcon, RectangleStackIcon } from "@heroicons/vue/24/solid";
+import { CalendarDaysIcon, RectangleStackIcon, ListBulletIcon } from "@heroicons/vue/24/solid";
 type Tab = {
   name: string;
   icon: any;
@@ -46,12 +46,12 @@ type Tab = {
 
 const tabs: Tab[] = [
   {
-    name: "By Status",
+    name: "Kanban",
     icon: RectangleStackIcon,
   },
   {
-    name: "Due Tasks",
-    icon: CalendarDaysIcon,
+    name: "List View",
+    icon: ListBulletIcon,
   },
 ];
 const activeTab = ref<Tab>(tabs[0]);

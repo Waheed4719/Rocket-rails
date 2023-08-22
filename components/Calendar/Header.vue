@@ -2,11 +2,11 @@
   <header
     class="bg-white flex items-center justify-between border-b afp py-4 cxn"
   >
-    <h1 class="avt awb awk axq">
+    <h1 class="avt font-semibold awk axq">
       <time datetime="2022-01">{{ currentMonth + " " + currentYear }}</time>
     </h1>
     <div class="flex items-center">
-      <div class="ab flex items-center adp alj bbi cmx">
+      <div class="relative flex items-center adp alj bbi cmx">
         <div class="u aa af adp bbo bbs bca" aria-hidden="true"></div>
         <button
           @click="prevMonth"
@@ -31,11 +31,11 @@
         <button
           @click="getToday"
           type="button"
-          class="ly arb avv awb axq bic bmb ckz"
+          class="hidden arb avv font-semibold axq bic bmb ckz"
         >
           Today
         </button>
-        <span class="ab gb nu tj aih clg"></span>
+        <span class="relative gb nu w-px aih clg"></span>
         <button
           @click="nextMonth"
           type="button"
@@ -57,24 +57,24 @@
           </svg>
         </button>
       </div>
-      <div class="ly ckm clc cmv">
-        <div class="ab">
+      <div class="hidden md:ml-4 md:flex md:items-center">
+        <div class="relative">
           <Listbox
             :options="options"
             :selectedOption="selectedOption"
             @update:selectedOption="updateSelectedOption"
           />
         </div>
-        <div class="ju nx tj aih"></div>
+        <div class="ml-4 h-6 w-px aih"></div>
         <button
           type="button"
-          class="ju adp bg-primaryColor ara arq avv awb bac bbi bin bot bou bow bpf"
+          class="ml-4 adp bg-primaryColor ara arq avv font-semibold bac bbi bin bot bou bow bpf"
           @click="addEvent"
         >
           Add event
         </button>
       </div>
-      <div class="ab ju clg">
+      <div class="relative ml-6 clg">
         <button
           class="fv flex items-center adn aeu agt aql axk bks"
           id="headlessui-menu-button-2"

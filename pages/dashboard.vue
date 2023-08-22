@@ -9,7 +9,9 @@
   </div>
   <div class="h-[1px] w-full bg-gray-200 my-5"></div>
 </template>
+
 <script setup lang="ts">
+
 definePageMeta({
   layout: "authenticated",
   key: "dashboard",
@@ -20,4 +22,5 @@ useSeoMeta({
   description: "Dashboard",
   keywords: "Dashboard",
 });
+
 </script>

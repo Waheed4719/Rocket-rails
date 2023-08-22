@@ -1,8 +1,7 @@
 import { Document, Model, model, ObjectId, Schema } from 'mongoose';
 
-export interface Task {
-  project: ObjectId;
-  user: ObjectId;
+export interface Project {
+  owner: ObjectId;
   title: string;
   description: string;
   status: string;
@@ -11,17 +10,13 @@ export interface Task {
   priority?: string;
 }
 
-export interface TaskDocument extends Task, Document {}
+export interface ProjectDocument extends Project, Document {}
 
-export interface TaskModel extends Model<TaskDocument> {}
+export interface ProjectModel extends Model<ProjectDocument> {}
 
-// This is your Mongoose Task model
-const TaskSchema = new Schema<TaskDocument, TaskModel>({
-  project: {
-    type: Schema.Types.ObjectId,
-    ref: 'project',
-  },
-  user: {
+// This is your Mongoose Project model
+const ProjectSchema = new Schema<ProjectDocument, ProjectModel>({
+  owner: {
     type: Schema.Types.ObjectId,
     ref: 'user',
   },
@@ -36,7 +31,7 @@ const TaskSchema = new Schema<TaskDocument, TaskModel>({
     type: String,
     required: true,
     default: 'backlog',
-    enum: ['Todo', 'Backlog', 'Completed', 'In Progress', 'Review'],
+    enum: ['todo', 'backlog', 'completed', 'in-progress', 'review'],
   },
   category: {
     type: String,
@@ -53,6 +48,6 @@ const TaskSchema = new Schema<TaskDocument, TaskModel>({
     timestamps: true,
 });
 
-const Task = model<TaskDocument, TaskModel>('task', TaskSchema);
+const Project = model<ProjectDocument, ProjectModel>('project', ProjectSchema);
 
-export default Task;
+export default Project;

@@ -127,5 +127,16 @@ const checkIfDateMatches = (date: string, dateToCheckAgainst: string) => {
     return false;
   }
 };
+
+const gridStyle = {
+  computed: () => {
+    return {
+      "grid-template-rows":
+        props.daysArray.length > 35
+          ? "repeat(6, minmax(0, 1fr))"
+          : "repeat(5, minmax(0, 1fr))",
+    };
+  },
+};
 </script>
 <style lang=""></style>

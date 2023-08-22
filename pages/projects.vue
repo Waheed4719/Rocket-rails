@@ -5,7 +5,11 @@
       <h1 class="text-3xl font-bold text-gray-700">Finance Mobile App</h1>
     </div>
   </div>
-    <KanbanTabs />
+  <KanbanTabs />
+  <div
+    class="grid px-8"
+    style="grid-template-columns: repeat(6, minmax(320px, 1fr))"
+  ></div>
   <div
     class="grid px-8"
     style="grid-template-columns: repeat(6, minmax(320px, 1fr))"
@@ -14,6 +18,7 @@
       <Column
         v-for="status in statuses"
         class="flex flex-col gap-2 p-2 rounded-md w-full"
+        @dragstart="dragStart($event, status)"
         @drop="drop($event, status)"
         @dragover="allowDrop($event, status)"
         @dragleave="throttle(() => dragLeave(), 300)"
@@ -21,6 +26,8 @@
         :key="status"
         :tasks="tasks?.filter((task) => task.status === status) || []"
         :hoveredStatus="hoveredStatus == status"
+        :currentDraggedCard="currentDraggedCard"
+        :placeholderCardHeight="placeholderCardHeight"
       >
       </Column>
     </ClientOnly>
@@ -28,7 +35,7 @@
 </template>
 <script setup lang="ts">
 import Column from "@/components/Kanban/Column.vue";
-import { Task, TaskStatus } from "types";
+import { Task, TaskStatus, Project } from "types";
 
 definePageMeta({
   layout: "authenticated",
@@ -45,15 +52,21 @@ type TaskResponse = {
   tasks: Task[];
   statuses: TaskStatus[];
 };
+type ProjectResponse = {
+  projects: Project[];
+}
+
+let projects = reactive<Project[]>([]);
 let tasks = reactive<Task[]>([]);
 let statuses = reactive<TaskStatus[]>([]);
 
-const { data } = useFetch<TaskResponse>("/api/tasks");
+const { data: tasksData } = useFetch<TaskResponse>("/api/tasks");
+const { data: projectsData } = useFetch<ProjectResponse>("/api/projects");
 
 watchEffect(() => {
-  if (data.value) {
-    tasks.splice(0, tasks.length, ...(data.value?.tasks || []));
-    statuses.splice(0, statuses.length, ...(data.value?.statuses || []));
+  if (tasksData.value) {
+    tasks.splice(0, tasks.length, ...(tasksData.value?.tasks || []));
+    statuses.splice(0, statuses.length, ...(tasksData.value?.statuses || []));
   }
 });
 
@@ -82,7 +95,7 @@ async function drop(ev: DragEvent, status: TaskStatus) {
 
   // make an api call
   const response = await fetch("/api/tasks", {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
@@ -111,4 +124,16 @@ function throttle(fn: Function, delay: number) {
     }, delay);
   }
 }
+const placeholderCardHeight = ref<number>(0);
+const currentDraggedCard = ref<TaskStatus | null>(null);
+const dragStart = (ev: DragEvent, status: TaskStatus) => {
+  const targetElement = ev.target as HTMLElement; // Cast the target to HTMLElement
+  const rect = targetElement.getBoundingClientRect();
+  placeholderCardHeight.value = rect.height;
+  currentDraggedCard.value = status
+};
 </script>
+
+
+
+
