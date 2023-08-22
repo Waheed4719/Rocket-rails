@@ -36,3 +36,4 @@ export const routes = <Route[]>[
         icon: 'ChartBarIcon',
     },
 ]
+

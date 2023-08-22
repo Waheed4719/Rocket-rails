@@ -19,7 +19,7 @@
           <p class="text-gray-400 text-sm p-4 text-center">No tasks</p>
         </template>
         <template v-else>
-          <Card
+          <TaskCard
             v-for="task in tasks?.filter((task) => task.status === status)"
             :key="task._id"
             :task="task"
@@ -44,7 +44,7 @@
 </template>
 <script setup lang="ts">
 import { Task, TaskStatus } from "types";
-import Card from "./Card.vue";
+import TaskCard from "./TaskCard.vue";
 import { PlusIcon } from "@heroicons/vue/20/solid";
 
 defineProps<{

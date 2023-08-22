@@ -7,27 +7,7 @@ import { UserDocument } from "../models/User";
 type TaskObj = {
   [key: string]: TaskDocument[]
 }
-const getUpdatedStatus = (status: string) => {
-  switch(status){
-    case 'todo':
-      return 'Todo'
 
-    case 'backlog':
-      return 'Backlog'
-    
-    case 'completed':
-      return 'Completed'
-
-    case 'in-progress':
-      return 'In Progress'
-
-    case 'review':
-      return 'Review'
-
-    default:
-      return status
-  } 
-}
 export default defineEventHandler(async (event: H3Event) => {
 
   const session = await getServerSession(event);
@@ -38,24 +18,20 @@ export default defineEventHandler(async (event: H3Event) => {
   }
   const user = session.user as UserDocument
   if (event.node.req.method === "GET") {
-    const tasks: TaskDocument[] = await TaskModel.find({user: user._id});
+    // get project id from query params
+    
+    const projectId = new URL('http://localhost:3000/'+ event.node.req.url).searchParams.get('projectId')
+    const tasks: TaskDocument[] = await TaskModel.find({user: user._id, project: projectId });
     const statuses = tasks.reduce((acc: string[], curr: TaskDocument) => {
       if (!acc.includes(curr.status)) {
         acc.push(curr.status);
       }
       return acc;
     }, []);
-
-    
-
     const taskObj:TaskObj = {}
-  
-
     for (const status of statuses) {
-     
       taskObj[status] = tasks.filter((task: TaskDocument) => task.status === status);
     }
-    console.log(taskObj)
     return {
       taskObj,
       tasks,

@@ -329,7 +329,7 @@ definePageMeta({
                       role="tab"
                       type="button"
                       aria-selected="true"
-                      tabIndex="{0}"
+                      tab-index="0"
                       data-headlessui-state="selected"
                       aria-controls="headlessui-tabs-panel-:Rda76:"
                     >
@@ -432,7 +432,7 @@ definePageMeta({
               <div
                 id="headlessui-tabs-panel-:Rda76:"
                 role="tabpanel"
-                tabIndex="{0}"
+                tab-index="0"
                 data-headlessui-state="selected"
                 aria-labelledby="headlessui-tabs-tab-:R2ba76:"
               >
@@ -839,7 +839,7 @@ definePageMeta({
                     role="tab"
                     type="button"
                     aria-selected="true"
-                    tabIndex="{0}"
+                    tab-index="0"
                     data-headlessui-state="selected"
                     aria-controls="headlessui-tabs-panel-:Rbb96:"
                   >
@@ -951,7 +951,7 @@ definePageMeta({
                   aria-hidden="false"
                   id="headlessui-tabs-panel-:Rbb96:"
                   role="tabpanel"
-                  tabIndex="{0}"
+                  tab-index="0"
                   data-headlessui-state="selected"
                   aria-labelledby="headlessui-tabs-tab-:Rir96:"
                 >

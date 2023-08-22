@@ -19,14 +19,16 @@ export type Task = {
     date: string;
 }
 
+
+
 export type Project = {
     _id: ObjectId | string;
     owner: User | ObjectId;
     title: string;
     description: string;
     status: TaskStatus;
-    priority: TaskPriority;
-    category: TaskCategory;
+    priority?: TaskPriority;
+    category?: TaskCategory;
     date: string;
 }
 
@@ -38,4 +40,9 @@ export type User = {
     lastName: string;
     role: UserRole;
     password?: string;
+}
+
+export type BreadcrumbType = {
+    name: string,
+    href: string
 }

@@ -1,16 +1,15 @@
 <template>
   <div class="px-8">
-    <h2 class="text-gray-700 font-semibold mb-1 text-md">🚀 Client Projects</h2>
+    <BreadCrumbs :crumbs="breadCrumbs" />
     <div class="flex justify-between">
-      <h1 class="text-3xl font-bold text-gray-700">Finance Mobile App</h1>
+      <h1 class="text-3xl font-bold text-gray-700">Project Nero</h1>
     </div>
   </div>
-  <KanbanTabs />
+  <ClientOnly>
+    <KanbanTabs :activeTab="activeTab" :tabs="tabs" />
+  </ClientOnly>
   <div
-    class="grid px-8"
-    style="grid-template-columns: repeat(6, minmax(320px, 1fr))"
-  ></div>
-  <div
+    v-if="activeTab.name === 'Kanban'"
     class="grid px-8"
     style="grid-template-columns: repeat(6, minmax(320px, 1fr))"
   >
@@ -29,13 +28,25 @@
         :currentDraggedCard="currentDraggedCard"
         :placeholderCardHeight="placeholderCardHeight"
       >
-      </Column>
-    </ClientOnly>
+      </Column
+    ></ClientOnly>
+  </div>
+  <div class="px-8">
+    <Table v-if="activeTab.name === 'List View'" :data="tasks" />
   </div>
 </template>
 <script setup lang="ts">
 import Column from "@/components/Kanban/Column.vue";
-import { Task, TaskStatus, Project } from "types";
+import { Task, TaskStatus } from "types";
+import { RectangleStackIcon, ListBulletIcon } from "@heroicons/vue/24/solid";
+import KanbanTabs from "@/components/Kanban/Tabs.vue";
+import Table from "@/components/Kanban/Table.vue";
+const { id: projectId } = useRoute().params;
+
+const breadCrumbs = [
+  { name: "Projects", href: "/projects", disabled: false },
+  { name: "Project Nero", href: `/projects/${projectId}`, disabled: true },
+];
 
 definePageMeta({
   layout: "authenticated",
@@ -52,16 +63,40 @@ type TaskResponse = {
   tasks: Task[];
   statuses: TaskStatus[];
 };
-type ProjectResponse = {
-  projects: Project[];
-}
+type Tab = {
+  name: string;
+  icon: any;
+};
+const tabs: Tab[] = [
+  {
+    name: "Kanban",
+    icon: RectangleStackIcon,
+  },
+  {
+    name: "List View",
+    icon: ListBulletIcon,
+  },
+];
 
-let projects = reactive<Project[]>([]);
+const route = useRoute();
+
 let tasks = reactive<Task[]>([]);
 let statuses = reactive<TaskStatus[]>([]);
+const activeTab = ref<Tab>(tabs[0]);
 
-const { data: tasksData } = useFetch<TaskResponse>("/api/tasks");
-const { data: projectsData } = useFetch<ProjectResponse>("/api/projects");
+watchEffect(() => {
+  if (route && route.query && route.query.tab) {
+    const tabName = route.query.tab as string;
+    const tab = tabs.find((tab) => tab.name === tabName);
+    if (tab) {
+      activeTab.value = tab;
+    }
+  }
+});
+
+const { data: tasksData } = useFetch<TaskResponse>(
+  "/api/tasks?projectId=" + projectId
+);
 
 watchEffect(() => {
   if (tasksData.value) {
@@ -130,10 +165,6 @@ const dragStart = (ev: DragEvent, status: TaskStatus) => {
   const targetElement = ev.target as HTMLElement; // Cast the target to HTMLElement
   const rect = targetElement.getBoundingClientRect();
   placeholderCardHeight.value = rect.height;
-  currentDraggedCard.value = status
+  currentDraggedCard.value = status;
 };
 </script>
-
-
-
-

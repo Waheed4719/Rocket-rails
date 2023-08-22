@@ -45,7 +45,7 @@
               :class="{
                 'bg-primaryColor text-white':
                   currentRoute.name == route.name ||
-                  currentRoute.path == route.path,
+                  currentRoute.path == route.path || currentRoute.path.includes(route.path),
                 'text-gray-600 hover:bg-gray-200 hover:text-black':
                   currentRoute.path != route.path,
                 'bqb flex gap-x-3 rounded-xl p-2 text-sm leading-6 font-semibold group ': true,
