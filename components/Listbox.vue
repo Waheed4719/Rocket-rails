@@ -1,5 +1,5 @@
 <template>
-  <Listbox v-model="selectedOption">
+  <Listbox>
     <ListboxButton
       type="button"
       class="flex items-center gap-x-3 rounded-md alj px-3 py-2 text-sm font-semibold axq bbi bbo bbs bca bic pr-[40px]"
@@ -74,7 +74,6 @@ defineProps<{
   options: ListBoxSelectOption[];
   selectedOption: ListBoxSelectOption;
 }>();
-
 
 const emits = defineEmits<{
   (e: "update:selectedOption", option: ListBoxSelectOption): void;
