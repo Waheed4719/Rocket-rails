@@ -24,7 +24,6 @@ export default NuxtAuthHandler({
               console.log('got here', credentials)
 
               const user: UserDocument | null = await UserModel.findOne({email: credentials?.email})
-              console.log('user', user)
               if (user && bcrypt.compareSync(credentials.password, user.password)) {
                 return user
               } else {

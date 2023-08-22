@@ -1,8 +1,8 @@
 <template>
   <div class="mb-4 px-8">
-    <h2 class="text-gray-700 font-semibold mb-1 text-md">🏄 Dashboard</h2>
+    <BreadCrumbs :crumbs="breadCrumbs" />
     <div class="flex justify-between">
-      <h1 class="text-3xl font-bold text-gray-700">Overview</h1>
+      <h1 class="text-3xl font-bold text-gray-700">🏄 Overview</h1>
 
       <div></div>
     </div>
@@ -11,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+const breadCrumbs = [{ name: "Dashboard", href: "/dashboard", disabled: true }];
 
 definePageMeta({
   layout: "authenticated",

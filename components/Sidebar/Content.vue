@@ -90,8 +90,7 @@
           <Cog6ToothIcon class="w-6 h-6 shrink-0" />
           Settings
         </a>
-        <a
-          href=":null"
+        <nuxt-link
           class="bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-200 hover:text-black"
           @click="
             signOut({
@@ -100,7 +99,7 @@
           "
         >
           <ArrowLeftOnRectangleIcon class="w-6 h-6 shrink-0" /> Log out
-        </a>
+        </nuxt-link>
       </li>
     </ul>
   </nav>
