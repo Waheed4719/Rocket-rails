@@ -9,9 +9,7 @@ useSeoMeta({
   keywords: "Events",
 });
 
-const breadCrumbs = [
-  { name: "Events", href: "/events", disabled: true },
-];
+const breadCrumbs = [{ name: "Events", href: "/events", disabled: true }];
 </script>
 <template>
   <div class="mb-4 px-8">

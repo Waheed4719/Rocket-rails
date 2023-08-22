@@ -103,19 +103,17 @@
 <script setup lang="ts">
 import { defineComponent, ref } from "vue";
 import Listbox from "@/components/Listbox.vue";
+import { ListBoxSelectOption } from "types";
 defineComponent({
   name: "CalendarHeader",
 });
 
-type SelectOption = {
-  label: string;
-  value: string;
-};
+
 const props = defineProps<{
-  currentMonth: String,
-  currentYear: Number,
-  openModal: Boolean,
-  selectedView: SelectOption,
+  currentMonth: String;
+  currentYear: Number;
+  openModal: Boolean;
+  selectedView: ListBoxSelectOption;
 }>();
 
 const emits = defineEmits<{
@@ -123,7 +121,7 @@ const emits = defineEmits<{
   (e: "nextMonth"): void;
   (e: "getToday"): void;
   (e: "handleEventModal"): void;
-  (e: "handleViewChange", option: SelectOption): void;
+  (e: "handleViewChange", option: ListBoxSelectOption): void;
 }>();
 
 const addEvent = () => {
@@ -161,16 +159,15 @@ const options = [
   },
 ];
 const selectedOption = ref(props.selectedView || options[1]);
-watchEffect(()=>{
-  if(props.selectedView){
+watchEffect(() => {
+  if (props.selectedView) {
     selectedOption.value = props.selectedView;
   }
-})
+});
 
-
-
-const updateSelectedOption = (option: SelectOption) => {
+const updateSelectedOption = (option: ListBoxSelectOption) => {
   selectedOption.value = option;
+  console.log("Header", selectedOption.value);
   emits("handleViewChange", option);
 };
 </script>

@@ -46,3 +46,8 @@ export type BreadcrumbType = {
     name: string,
     href: string
 }
+
+export type ListBoxSelectOption = {
+    label: string;
+    value: string;
+  };

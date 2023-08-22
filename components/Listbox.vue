@@ -21,7 +21,6 @@
       leave-to-class="opacity-0"
     >
       <ListboxOptions
-      
         class="min-w-fit z-10 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
       >
         <ListboxOption
@@ -33,13 +32,17 @@
         >
           <li
             :class="[
-              selectedOption.value == option.value ? 'bg-amber-100 text-amber-900' : 'text-gray-900',
+              selectedOption.value == option.value
+                ? 'bg-amber-100 text-amber-900'
+                : 'text-gray-900',
               'relative cursor-default select-none py-2 pl-10 pr-4 text-gray-900 hover:bg-amber-100 hover:text-amber-900',
             ]"
           >
             <span
               :class="[
-                selectedOption.value == option.value ? 'font-medium' : 'font-normal',
+                selectedOption.value == option.value
+                  ? 'font-medium'
+                  : 'font-normal',
                 'block truncate',
               ]"
               >{{ option.label }}</span
@@ -60,36 +63,24 @@
 <script setup lang="ts">
 import {
   Listbox,
-  ListboxLabel,
   ListboxButton,
   ListboxOptions,
   ListboxOption,
 } from "@headlessui/vue";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
+import { ListBoxSelectOption } from "types";
 
-type Option = {
-  label: string;
-  value: string; // Use lowercase 'string' here
-};
-
-const props = defineProps({
-  options: {
-    type: Array as () => Option[],
-    required: true,
-  },
-  selectedOption: {
-    type: Object as () => Option,
-    required: true,
-  },
-});
-
-const {selectedOption, options} = props
-
-const emits = defineEmits<{
-  (e: "update:selectedOption", option: Option): void;
+defineProps<{
+  options: ListBoxSelectOption[];
+  selectedOption: ListBoxSelectOption;
 }>();
 
-const handleClick = (option: Option) => {
+
+const emits = defineEmits<{
+  (e: "update:selectedOption", option: ListBoxSelectOption): void;
+}>();
+
+const handleClick = (option: ListBoxSelectOption) => {
   emits("update:selectedOption", option);
 };
 </script>

@@ -14,9 +14,16 @@
         :selectedView="selectedView"
         @handleViewChange="handleViewChange"
       />
-      
-      <MonthView v-if="selectedView.value=='month'" :events="events" :daysArray="daysArray" :previousMonthPaddingDays="previousMonthPaddingDays" :daysInMonth="daysInMonth" :currentFormattedDate="currentFormattedDate" />
-      <DayView v-if="selectedView.value=='day'"/>
+
+      <MonthView
+        v-if="selectedView.value == 'month'"
+        :events="events"
+        :daysArray="daysArray"
+        :previousMonthPaddingDays="previousMonthPaddingDays"
+        :daysInMonth="daysInMonth"
+        :currentFormattedDate="currentFormattedDate"
+      />
+      <DayView v-if="selectedView.value == 'day'" />
       <div class="px-4 py-10 md:px-6 cux">
         <ol
           class="relative aca overflow-hidden ado bg-white avv bbd bbo bbt bdq"
@@ -63,7 +70,7 @@
       </div>
     </div>
   </div>
-  <Modal :open="openModal" @handleEventModal="toggleEventModal"/>
+  <Modal :open="openModal" @handleEventModal="toggleEventModal" />
 </template>
 
 <script setup lang="ts">
@@ -74,7 +81,7 @@ import useCalendar from "@/hooks/useCalendar";
 import Modal from "@/components/Modal/index.vue";
 import MonthView from "./MonthView.vue";
 import DayView from "./DayView.vue";
-
+import { ListBoxSelectOption } from "types";
 
 defineComponent({
   name: "CalendarComponent",
@@ -192,10 +199,10 @@ const formatTime = (date: string) => {
   });
 };
 
-
-const handleViewChange = (option: {label: string, value: string}) => {
-  selectedView.value = option
-}
+const handleViewChange = (option: ListBoxSelectOption) => {
+  selectedView.value = option;
+  console.log("Calendar", selectedView.value);
+};
 </script>
 <style lang="css">
 @import "~/assets/css/calendar.css";
