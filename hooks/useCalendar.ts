@@ -43,7 +43,6 @@ const useCalendar = () => {
   const state = reactive(initialState);
   let firstLoad = true;
   const load = () => {
-    console.log(state.nav);
     const dt = new Date();
 
     state.daysInMonth = 0;

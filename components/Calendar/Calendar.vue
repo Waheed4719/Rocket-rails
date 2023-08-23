@@ -24,7 +24,7 @@
         :currentFormattedDate="currentFormattedDate"
       />
       <DayView v-if="selectedView.value == 'day'" />
-      <div class="px-4 py-10 md:px-6 cux">
+      <div class="px-4 py-10 md:px-6 lg:hidden">
         <ol
           class="relative aca overflow-hidden ado bg-white avv bbd bbo bbt bdq"
         >
@@ -118,7 +118,7 @@ const {
 // write the dates in iso format
 const events = [
   {
-    date: "2023-08-22T15:00", // '2022-01-22T15:00
+    date: "2023-08-23T15:00", // '2022-01-22T15:00
     title: "Maple syrup museum",
   },
   {
@@ -126,7 +126,7 @@ const events = [
     title: "Hockey game",
   },
   {
-    date: "2023-08-15T15:00", // '2022-01-22T15:00
+    date: "2023-08-23T15:00", // '2022-01-22T15:00
     title: "Interview at Apple",
   },
   {

@@ -1,6 +1,6 @@
 <template lang="">
   <nav class="flex my-3" aria-label="Breadcrumb">
-    <ol role="list" class="flex gap-4">
+    <ol role="list" class="flex gap-2">
       <li>
         <div class="flex">
           <nuxt-link
@@ -12,7 +12,7 @@
       </li>
       <li v-for="(crumb, index) in crumbs" :key="crumb">
         <div class="flex gap-2">
-          <ChevronRightIcon class="h-5 w-5" />
+          <ChevronRightIcon class="h-5 w-5 text-gray-500" />
           <nuxt-link
             :event="crumb.disabled ? '' : 'click'"
             :to="crumb.href"

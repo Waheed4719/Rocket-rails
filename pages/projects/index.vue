@@ -18,7 +18,6 @@
     >
       <ProjectCard
         :project="project"
-        @click="() => router.push(`/projects/${project._id}`)"
       />
     </nuxt-link>
     <div></div>
@@ -28,7 +27,6 @@
 import ProjectCard from "@/components/Kanban/ProjectCard.vue";
 import { Project } from "types";
 
-const router = useRouter();
 
 definePageMeta({
   layout: "authenticated",

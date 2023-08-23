@@ -1,8 +1,11 @@
 <template lang="">
   <div class="bbd bbo bbt bdq lg:flex flex-1 lg:flex-col">
     <CalendarDays />
-    <div class="flex aig text-xs leading-6 axo flex-1">
-      <div class="hidden w-full lg:grid cyq lg:gap-px" :style="gridStyle">
+    <div class="flex bg-gray-200 text-xs leading-6 axo flex-1">
+      <div
+        class="hidden w-full lg:grid lg:grid-cols-7 lg:gap-px"
+        :style="gridStyle"
+      >
         <div
           v-for="(dateObj, index) in daysArray"
           :key="dateObj.formattedDate"
@@ -46,7 +49,10 @@
           </ol>
         </div>
       </div>
-      <div class="dx lw w-full yh zp cux" :style="gridStyle">
+      <div
+        class="isolate grid w-full grid-cols-7 gap-px lg:hidden"
+        :style="gridStyle"
+      >
         <button
           type="button"
           v-for="(dateObj, index) in daysArray"

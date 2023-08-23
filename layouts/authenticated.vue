@@ -27,7 +27,4 @@ const handleSidebar = () => {
   sidebarOpen.value = !sidebarOpen.value;
 };
 
-watchEffect(()=>{
-  console.log('sidebarOpen', sidebarOpen.value)
-})
 </script>

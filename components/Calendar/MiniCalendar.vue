@@ -23,11 +23,11 @@
       </div>
     </div>
 
-    <div class="-mb-2 lw yh avx awk axm">
+    <div class="-mb-2 grid grid-cols-7 avx awk axm">
       <div v-for="dayObj in weekdays" :key="dayObj.id">{{ dayObj.value }}</div>
     </div>
     <div
-      class="dx kw lw yh zp ado aig avv bbd bbo bbz rounded-t-lg overflow-hidden">
+      class="isolate kw grid grid-cols-7 gap-px ado bg-gray-200 avv bbd bbo bbz rounded-t-lg overflow-hidden">
       <button
         v-for="(dateObj, index) in daysArray"
         :key="dateObj.formattedDate"

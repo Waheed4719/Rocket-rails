@@ -4800,7 +4800,7 @@ html {
 .aif {
   background-color: rgb(243 244 246 / 0.1);
 }
-.aig {
+.bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
