@@ -70,7 +70,7 @@
       </div>
     </div>
   </div>
-  <Modal :open="openModal" @handleEventModal="toggleEventModal" />
+  <ModalCalendarEvent :open="openModal" @handleEventModal="toggleEventModal" />
 </template>
 
 <script setup lang="ts">
@@ -78,7 +78,6 @@ import { defineComponent } from "vue";
 import CalendarHeader from "@/components/Calendar/Header.vue";
 import CalendarDays from "@/components/Calendar/Days.vue";
 import useCalendar from "@/hooks/useCalendar";
-import Modal from "@/components/Modal/index.vue";
 import MonthView from "./MonthView.vue";
 import DayView from "./DayView.vue";
 import { ListBoxSelectOption } from "types";
@@ -159,7 +158,6 @@ const selectedView = ref(options[1]);
 const checkIfDateMatches = (date: string, dateToCheckAgainst: string) => {
   // Create a Date object for the current date
   var currentDate = new Date(date);
-
   // Create a Date object for the date you want to check
   var dateToCheck = new Date(dateToCheckAgainst); // Replace with the date you want to check
 
@@ -201,8 +199,11 @@ const formatTime = (date: string) => {
 
 const handleViewChange = (option: ListBoxSelectOption) => {
   selectedView.value = option;
-  console.log("Calendar", selectedView.value);
 };
+
+defineEmits<{
+  (e: "handleEventModal"): boolean;
+}>();
 </script>
 <style lang="css">
 @import "~/assets/css/calendar.css";

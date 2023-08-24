@@ -51,3 +51,5 @@ export type ListBoxSelectOption = {
     label: string;
     value: string;
   };
+
+  export type ModalActionType = 'primary' | 'secondary' | 'close' 

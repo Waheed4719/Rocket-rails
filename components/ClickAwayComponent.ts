@@ -1,12 +1,12 @@
 import { onMounted, onBeforeUnmount, Ref } from 'vue';
 
-export const ClickAwayComponent = (
+const ClickAwayComponent = (
   elementRef: Ref<HTMLElement | null>,
   callback: () => void
 ) => {
   const handleClick = (event: MouseEvent) => {
+    event.stopPropagation()
     const target = event.target as HTMLElement;
-
     if (elementRef.value && !elementRef.value.contains(target)) {
       callback();
     }
@@ -20,3 +20,5 @@ export const ClickAwayComponent = (
     document.removeEventListener('click', handleClick);
   });
 };
+
+export default ClickAwayComponent

@@ -3,5 +3,5 @@
     <slot />
   </div>
 </template>
-<script setup lag="ts"></script>
+<script setup lang="ts"></script>
 <style lang=""></style>

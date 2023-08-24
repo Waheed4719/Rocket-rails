@@ -4,6 +4,7 @@ export type Day = {
   day: number;
   date: Date;
   formattedDate: string;
+  formattedDateWithWeek: string
 };
 // Define the state type
 type CalendarState = {
@@ -40,7 +41,7 @@ const initialState: CalendarState = {
 };
 
 const useCalendar = () => {
-  const state = reactive(initialState);
+  const state = reactive({...initialState});
   let firstLoad = true;
   const load = () => {
     const dt = new Date();
@@ -123,6 +124,16 @@ const useCalendar = () => {
           currentMonth,
           day
         ).toLocaleDateString('en-us', {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        }),
+        formattedDateWithWeek: new Date(
+          state.currentYear,
+          currentMonth,
+          day
+        ).toLocaleDateString('en-us', {
+          weekday: 'long',
           year: 'numeric',
           month: 'numeric',
           day: 'numeric',

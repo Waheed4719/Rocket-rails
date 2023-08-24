@@ -181,8 +181,8 @@ function isoStringToGridRow(isoStartTime:string, isoEndTime:string) {
 
   // Calculate row number and span
   const minutesPerRow = 60 / 12; // 12 rows per hour
-  const startRow = Math.round(startMinutesTotal / minutesPerRow);
-  const span = Math.round((endMinutesTotal - startMinutesTotal) / minutesPerRow) + 1;
+  const startRow = Math.round(startMinutesTotal / minutesPerRow) + 1;
+  const span = Math.round((endMinutesTotal - startMinutesTotal) / minutesPerRow) ;
 
   // const startTimeFormatted = isoStringToFormattedTime(isoStartTime);
   // const endTimeFormatted = isoStringToFormattedTime(isoEndTime);

@@ -1,6 +1,6 @@
 <template>
   <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-10" @close="open = false">
+    <Dialog as="div" class="relative z-10">
       <TransitionChild
         as="template"
         enter="ease-out duration-300"
@@ -28,12 +28,18 @@
             leave-from="opacity-100 translate-y-0 sm:scale-100"
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <DialogPanel
-              class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+            <div
+              class="relative transform rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg overflow-visible"
             >
-              <ModalContent />
-              <ModalFooter @handlePrimaryAction="handleModal" @handleSecondaryAction="handleModal"/>
-            </DialogPanel>
+              <ModalContent>
+                <slot />
+              </ModalContent>
+              <ModalFooter
+                :primaryActionText="primaryActionText"
+                :secondaryActionText="secondaryActionText"
+                @handleModal="handleModal"
+              />
+            </div>
           </TransitionChild>
         </div>
       </div>
@@ -51,18 +57,24 @@ import {
 } from "@headlessui/vue";
 import { ExclamationTriangleIcon } from "@heroicons/vue/24/outline";
 import ModalContentVue from "./ModalContent.vue";
+import { ModalActionType } from "types";
 
-const props = defineProps({
-    open: Boolean,
-})
+defineProps<{
+  open: boolean;
+  primaryActionText: string;
+  secondaryActionText: string;
+}>();
 
 const emits = defineEmits<{
-    (e: 'handleEventModal'): boolean
-}>()
+  (e: "handleModal", type: ModalActionType): boolean;
+  (e: "onLoad"): HTMLElement | null;
+}>();
 
-const handleModal = () => {
-    emits('handleEventModal')
-}
+const handleModal = (type: ModalActionType) => {
+  emits("handleModal", type);
+};
 
-const {open} = toRefs(props)
+const closeModal = () => {
+  emits("handleModal", "close");
+};
 </script>

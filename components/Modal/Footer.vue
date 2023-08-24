@@ -5,7 +5,7 @@
       class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
       @click="handleModal('primary')"
     >
-      Deactivate
+      {{ primaryActionText ?? "Primary Action" }}
     </button>
     <button
       type="button"
@@ -13,22 +13,23 @@
       @click="handleModal('secondary')"
       ref="cancelButtonRef"
     >
-      Cancel
+      {{ secondaryActionText ?? "Secondary Action" }}
     </button>
   </div>
 </template>
 <script setup lang="ts">
-
-const emits = defineEmits<{
-  (e: "handlePrimaryAction" | "handleSecondaryAction"): boolean;
+import { ModalActionType } from "types";
+defineProps<{
+  primaryActionText: string;
+  secondaryActionText: string;
 }>();
 
-const handleModal = (type: "primary" | "secondary") => {
-  if (type === "primary") {
-    emits("handlePrimaryAction");
-  } else {
-    emits("handleSecondaryAction");
-  }
+const emits = defineEmits<{
+  (e: "handleModal", type: ModalActionType): boolean;
+}>();
+
+const handleModal = (type: ModalActionType) => {
+  emits("handleModal", type);
 };
 </script>
 <style lang=""></style>
