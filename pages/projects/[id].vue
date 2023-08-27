@@ -8,7 +8,7 @@
   <ClientOnly>
     <KanbanTabs :activeTab="activeTab" :tabs="tabs" />
   </ClientOnly>
-  <div class="w-fit">
+  <div class="min-w-fit w-full">
     <div
       v-if="activeTab.name === 'Kanban'"
       class="grid px-8 gap-3"
