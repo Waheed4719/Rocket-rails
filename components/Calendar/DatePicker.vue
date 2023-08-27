@@ -7,7 +7,7 @@
         <CalendarDaysIcon class="h-5 w-5 text-gray-400" />
       </div>
       <input
-        :value="selectedDate?.formattedDateWithWeek"
+        :value="selectedDate?.formattedDateWithWeekday"
         @focus="pickerOpen = true"
         type="text"
         class="bg-gray-50 font-medium h-[40px] border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full pl-[45px] p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"

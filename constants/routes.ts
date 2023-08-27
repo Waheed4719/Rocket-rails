@@ -34,6 +34,6 @@ export const routes = <Route[]>[
         name: 'Reports',
         path: '/reports',
         icon: 'ChartBarIcon',
-    },
+    }
 ]
 

@@ -16,6 +16,7 @@ export type Task = {
     status: TaskStatus;
     priority: TaskPriority;
     category: TaskCategory;
+    position: number;
     date: string;
 }
 

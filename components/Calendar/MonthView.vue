@@ -8,6 +8,7 @@
       >
         <div
           v-for="(dateObj, index) in daysArray"
+          @click="handleEvent(dateObj)"
           :key="dateObj.formattedDate"
           :class="{
             'ail axm relative px-3 py-2':
@@ -32,9 +33,9 @@
               v-for="event in getEvents(dateObj.formattedDate)"
               :key="event.date"
             >
-              <a href="javascript:void(0);" class="bqb flex">
+              <a href="javascript:void(0);" class="flex">
                 <p
-                  class="ui overflow-hidden text-ellipsis whitespace-nowrap font-semibold brn text-gray-600"
+                  class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap font-semibold text-gray-600"
                 >
                   {{ event.title }}
                 </p>
@@ -92,6 +93,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import { Day } from 'hooks/useCalendar';
+
 const props = defineProps<{
   events: {
     title: string;
@@ -144,5 +147,9 @@ const gridStyle = {
     };
   },
 };
+
+const handleEvent = (dateObj: Day) =>{
+  console.log(dateObj)
+}
 </script>
 <style lang=""></style>

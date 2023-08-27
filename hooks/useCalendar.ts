@@ -4,7 +4,7 @@ export type Day = {
   day: number;
   date: Date;
   formattedDate: string;
-  formattedDateWithWeek: string
+  formattedDateWithWeekday: string
 };
 // Define the state type
 type CalendarState = {
@@ -128,7 +128,7 @@ const useCalendar = () => {
           month: 'numeric',
           day: 'numeric',
         }),
-        formattedDateWithWeek: new Date(
+        formattedDateWithWeekday: new Date(
           state.currentYear,
           currentMonth,
           day

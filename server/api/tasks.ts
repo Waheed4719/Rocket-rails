@@ -21,7 +21,15 @@ export default defineEventHandler(async (event: H3Event) => {
     // get project id from query params
     
     const projectId = new URL('http://localhost:3000/'+ event.node.req.url).searchParams.get('projectId')
-    const tasks: TaskDocument[] = await TaskModel.find({user: user._id, project: projectId });
+    const tasks: TaskDocument[] = await TaskModel.find({user: user._id, project: projectId }).sort({position: 1});
+    let lastPos = 0
+    let index = 0
+    // for (const task of tasks) {
+    //   task['position'] = (index + 1) * 60000;
+    //   task.save();
+    //   index++
+    // }
+
     const statuses = tasks.reduce((acc: string[], curr: TaskDocument) => {
       if (!acc.includes(curr.status)) {
         acc.push(curr.status);
@@ -40,7 +48,7 @@ export default defineEventHandler(async (event: H3Event) => {
   }
 
   else if (event.node.req.method === "PATCH") {
-    const { taskId, status } = await readBody(event);
+    const { taskId, status, position } = await readBody(event);
 
     let task: TaskDocument | null = await TaskModel.findOne({_id: taskId});
     
@@ -51,6 +59,7 @@ export default defineEventHandler(async (event: H3Event) => {
       })
     }
     task.status = status;
+    // task.position = position
     task = await task.save();
     return {
       message: 'Task updated successfully',

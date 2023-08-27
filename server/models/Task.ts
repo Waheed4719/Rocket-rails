@@ -9,6 +9,7 @@ export interface Task {
   category?: string;
   date?: Date;
   priority?: string;
+  position: Number
 }
 
 export interface TaskDocument extends Task, Document {}
@@ -40,6 +41,9 @@ const TaskSchema = new Schema<TaskDocument, TaskModel>({
   },
   category: {
     type: String,
+  },
+  position: {
+    type: Number,
   },
   date: {
     type: Date,

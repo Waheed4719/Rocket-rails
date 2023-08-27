@@ -10,15 +10,15 @@
   </ClientOnly>
   <div
     v-if="activeTab.name === 'Kanban'"
-    class="grid px-8"
+    class="grid px-8 gap-3"
     style="grid-template-columns: repeat(6, minmax(320px, 1fr))"
   >
     <ClientOnly>
       <Column
         v-for="status in statuses"
-        class="flex flex-col gap-2 p-2 rounded-md w-full"
+        class="flex flex-col rounded-md w-full"
         @dragstart="dragStart($event, status)"
-        @drop="drop($event, status)"
+        @drop="($event: DragEvent, status: TaskStatus, position: number, index: number) => drop($event, status, position, index)"
         @dragover="allowDrop($event, status)"
         @dragleave="throttle(() => dragLeave(), 300)"
         :status="status"
@@ -118,16 +118,19 @@ function dragLeave() {
 }
 
 // Drop function
-async function drop(ev: DragEvent, status: TaskStatus) {
+async function drop(ev: DragEvent, status: TaskStatus, position: number, index: number) {
   ev.preventDefault();
   const taskId = ev.dataTransfer!.getData("text");
   const taskIndex = tasks?.findIndex((task) => task._id === taskId);
   const prevTask = { ...tasks[taskIndex] };
   if (taskIndex !== -1 && tasks && taskIndex !== undefined) {
     tasks[taskIndex].status = status;
+    tasks[taskIndex].position = position;
+
+    tasks.sort((a, b) => a.position - b.position);
   }
   hoveredStatus.value = null;
-
+  
   // make an api call
   const response = await fetch("/api/tasks", {
     method: "PATCH",
@@ -137,11 +140,11 @@ async function drop(ev: DragEvent, status: TaskStatus) {
     body: JSON.stringify({
       taskId,
       status,
+      position
     }),
   });
   if (!response.ok) {
     console.log("error");
-    console.log(tasks[taskIndex], prevTask);
     setTimeout(() => {
       tasks[taskIndex].status = prevTask.status;
     }, 1500);
