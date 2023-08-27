@@ -8,31 +8,31 @@
   <ClientOnly>
     <KanbanTabs :activeTab="activeTab" :tabs="tabs" />
   </ClientOnly>
-  <div
-    v-if="activeTab.name === 'Kanban'"
-    class="grid px-8 gap-3"
-    style="grid-template-columns: repeat(6, minmax(320px, 1fr))"
-  >
-    <ClientOnly>
-      <Column
-        v-for="status in statuses"
-        class="flex flex-col rounded-md w-full"
-        @dragstart="dragStart($event, status)"
-        @drop="($event: DragEvent, status: TaskStatus, position: number, index: number) => drop($event, status, position, index)"
-        @dragover="allowDrop($event, status)"
-        @dragleave="throttle(() => dragLeave(), 300)"
-        :status="status"
-        :key="status"
-        :tasks="tasks?.filter((task) => task.status === status) || []"
-        :hoveredStatus="hoveredStatus == status"
-        :currentDraggedCard="currentDraggedCard"
-        :placeholderCardHeight="placeholderCardHeight"
-      >
-      </Column
-    ></ClientOnly>
-  </div>
-  <div class="px-8">
-    <Table v-if="activeTab.name === 'List View'" :data="tasks" />
+  <div class="w-fit">
+    <div
+      v-if="activeTab.name === 'Kanban'"
+      class="grid px-8 gap-3"
+      style="grid-template-columns: repeat(5, minmax(320px, 1fr))"
+    >
+      <ClientOnly>
+        <Column
+          v-for="status in statuses"
+          class="flex flex-col rounded-md w-full"
+          @dragstart="dragStart($event, status)"
+          @drop="($event: DragEvent, status: TaskStatus, position: number, index: number) => drop($event, status, position, index)"
+          @dragover="allowDrop($event, status)"
+          @dragleave="throttle(() => dragLeave(), 300)"
+          :status="status"
+          :key="status"
+          :tasks="tasks?.filter((task) => task.status === status) || []"
+          :hoveredStatus="hoveredStatus == status"
+          :currentDraggedCard="currentDraggedCard"
+          :placeholderCardHeight="placeholderCardHeight"
+      /></ClientOnly>
+    </div>
+    <div class="px-8" v-if="activeTab.name === 'List View'">
+      <Table :data="tasks" />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -118,19 +118,24 @@ function dragLeave() {
 }
 
 // Drop function
-async function drop(ev: DragEvent, status: TaskStatus, position: number, index: number) {
+async function drop(
+  ev: DragEvent,
+  status: TaskStatus,
+  position: number,
+  index: number
+) {
   ev.preventDefault();
   const taskId = ev.dataTransfer!.getData("text");
   const taskIndex = tasks?.findIndex((task) => task._id === taskId);
   const prevTask = { ...tasks[taskIndex] };
+  const prevTasks = [...tasks];
   if (taskIndex !== -1 && tasks && taskIndex !== undefined) {
     tasks[taskIndex].status = status;
     tasks[taskIndex].position = position;
-
     tasks.sort((a, b) => a.position - b.position);
   }
   hoveredStatus.value = null;
-  
+
   // make an api call
   const response = await fetch("/api/tasks", {
     method: "PATCH",
@@ -140,13 +145,16 @@ async function drop(ev: DragEvent, status: TaskStatus, position: number, index: 
     body: JSON.stringify({
       taskId,
       status,
-      position
+      position,
     }),
   });
   if (!response.ok) {
     console.log("error");
     setTimeout(() => {
-      tasks[taskIndex].status = prevTask.status;
+      const taskIndex = tasks.findIndex((task) => task._id === taskId);
+      tasks[taskIndex]!.status = prevTask.status;
+      tasks[taskIndex]!.position = prevTask.position;
+      tasks.sort((a, b) => a.position - b.position);
     }, 1500);
   }
 }

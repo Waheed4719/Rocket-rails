@@ -1,6 +1,6 @@
 <template>
   <div class="px-8">
-    <BreadCrumbs :crumbs="breadCrumbs"/>
+    <BreadCrumbs :crumbs="breadCrumbs" />
     <div class="flex justify-between">
       <h1 class="text-3xl font-bold text-gray-700">🚀 All Projects</h1>
     </div>
@@ -8,17 +8,14 @@
   <div class="h-[1px] w-full bg-gray-200 my-5"></div>
   <div
     class="grid px-8"
-    style="grid-template-columns: repeat(6, minmax(320px, 1fr))"
+    style="grid-template-columns: repeat(4, minmax(320px, 1fr))"
   >
     <nuxt-link
       v-for="project in projects"
       :key="(project._id as string)"
       :to="`/projects/${project._id}`"
-      
     >
-      <ProjectCard
-        :project="project"
-      />
+      <ProjectCard :project="project" />
     </nuxt-link>
     <div></div>
   </div>
@@ -26,7 +23,6 @@
 <script setup lang="ts">
 import ProjectCard from "@/components/Kanban/ProjectCard.vue";
 import { Project } from "types";
-
 
 definePageMeta({
   layout: "authenticated",
@@ -39,9 +35,7 @@ useSeoMeta({
   keywords: "Projects",
 });
 
-const breadCrumbs = [
-  { name: "Projects", href: "/projects", disabled: true },
-];
+const breadCrumbs = [{ name: "Projects", href: "/projects", disabled: true }];
 
 type ProjectResponse = {
   projects: Project[];

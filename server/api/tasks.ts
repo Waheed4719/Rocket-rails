@@ -59,7 +59,7 @@ export default defineEventHandler(async (event: H3Event) => {
       })
     }
     task.status = status;
-    // task.position = position
+    task.position = position
     task = await task.save();
     return {
       message: 'Task updated successfully',
