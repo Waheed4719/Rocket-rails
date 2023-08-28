@@ -48,10 +48,7 @@ export default defineEventHandler(async (event: H3Event) => {
   }
 
   else if (event.node.req.method === "PATCH") {
-    throw createError({
-      statusCode: 404,
-      statusMessage: 'Task not found'
-    })
+
     const { taskId, status, position } = await readBody(event);
 
     let task: TaskDocument | null = await TaskModel.findOne({_id: taskId});

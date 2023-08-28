@@ -128,7 +128,7 @@ async function drop(
   const taskId = ev.dataTransfer!.getData("text");
   const taskIndex = tasks?.findIndex((task) => task._id === taskId);
   const prevTask = { ...tasks[taskIndex] };
-  const prevTasks = [...tasks];
+  const prevTasks = tasks.map(task => ({...task}));
   if (taskIndex !== -1 && tasks && taskIndex !== undefined) {
     tasks[taskIndex].status = status;
     tasks[taskIndex].position = position;
@@ -152,9 +152,7 @@ async function drop(
     console.log("error");
     setTimeout(() => {
       const taskIndex = tasks.findIndex((task) => task._id === taskId);
-      tasks[taskIndex]!.status = prevTask.status;
-      tasks[taskIndex]!.position = prevTask.position;
-      tasks.sort((a, b) => a.position - b.position);
+      tasks.splice(0, tasks.length, ...prevTasks);
     }, 1500);
   }
 }
