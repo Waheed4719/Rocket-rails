@@ -7,7 +7,7 @@
         <div class="isolate flex ui adb bg-white">
           <div class="overflow-auto flex-col flex-1">
             <div
-              class="sticky top-0 z-10 grid flex-0 grid-cols-7 gap-x-0 gap-y-0 bg-white text-xs leading-[1rem] text-gray-500 bbd bbo bbt bdq clg"
+              class="sticky top-0 z-10 grid flex-0 grid-cols-7 gap-x-0 gap-y-0 bg-white text-xs leading-[1rem] text-gray-500 bbd bbo bbt bdq md:hidden"
             >
               <button type="button" class="flex flex-col items-center ase aus">
                 <span>W</span>

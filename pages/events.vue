@@ -2,7 +2,7 @@
   <div class="mb-4 px-8">
     <BreadCrumbs :crumbs="breadCrumbs" />
     <div class="flex justify-between">
-      <h1 class="text-3xl font-bold text-gray-700">🗓️ Daily Events</h1>
+      <h1 class="text-2xl font-bold text-gray-700">🗓️ Daily Events</h1>
       <div></div>
     </div>
   </div>

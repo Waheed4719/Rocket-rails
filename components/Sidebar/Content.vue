@@ -8,7 +8,7 @@
       </div>
       <div class="flex flex-col">
         <h3 class="font-semibold text-gray-700 text-lg">Red Studio</h3>
-        <h5 class="text-gray-400 text-xs font-semibold">Team Plan</h5>
+        <h5 class="text-gray-400 text-xs font-medium">Team Plan</h5>
       </div>
     </div>
     <ChevronUpDownIcon class="h-6 text-gray-400" />
@@ -19,7 +19,7 @@
   >
     <div class="flex items-center text-gray-500 gap-2 hover:text-black">
       <MagnifyingGlassIcon class="h-5" /><button
-        class="border-none text-sm flex flex-1 outline-none font-semibold w-[45%]"
+        class="border-none text-sm flex flex-1 outline-none font-medium w-[45%]"
         placeholder="Quick find"
       >
         Quick find
@@ -48,7 +48,7 @@
                   currentRoute.path == route.path || currentRoute.path.includes(route.path),
                 'text-gray-600 hover:bg-gray-200 hover:text-black':
                   currentRoute.path != route.path && !currentRoute.path.includes(route.path),
-                'bqb flex gap-x-3 rounded-xl p-2 text-sm leading-6 font-semibold group ': true,
+                'bqb flex gap-x-3 rounded-xl p-2 text-sm leading-6 font-medium group ': true,
               }"
             >
               <component class="h-6" :is="getIcon(route.icon)" />
@@ -58,12 +58,12 @@
         </ul>
       </li>
       <li>
-        <div class="text-xs font-semibold text-gray-400">Your teams</div>
+        <div class="text-xs font-medium text-gray-400">Your teams</div>
         <ul role="list" class="-mx-2 mt-2">
           <li v-for="team in teams" :key="team.name" class="my-1">
             <a
               href=":null"
-              class="text-gray-600 hover:bg-gray-200 hover:text-gray-500 bqb flex gap-x-3 rounded-xl p-2 text-sm leading-6 font-semibold"
+              class="text-gray-600 hover:bg-gray-200 hover:text-gray-500 bqb flex gap-x-3 rounded-xl p-2 text-sm leading-6 font-medium"
             >
               <span
                 class="axk afp hover:border-gray-400 flex w-6 h-6 shrink-0 items-center justify-center rounded-md border text-xs font-medishrink-0 bg-white"
@@ -81,7 +81,7 @@
         <a
           href=":null"
           :class="{
-            'bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-200 hover:text-black': true,
+            'bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-medium leading-6 text-gray-600 hover:bg-gray-200 hover:text-black': true,
             'bg-primaryColor text-white':
               currentRoute.name == 'settings' ||
               currentRoute.path == '/settings',
@@ -91,7 +91,7 @@
           Settings
         </a>
         <nuxt-link
-          class="bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-200 hover:text-black cursor-pointer"
+          class="bqb -mx-2 flex gap-x-3 rounded-xl p-2 text-sm font-medium leading-6 text-gray-600 hover:bg-gray-200 hover:text-black cursor-pointer"
           @click="
             signOut({
               callbackUrl: `/sign-in`,

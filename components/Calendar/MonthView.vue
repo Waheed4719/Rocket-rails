@@ -11,7 +11,7 @@
           @click="handleEvent(dateObj)"
           :key="dateObj.formattedDate"
           :class="{
-            'ail axm relative px-3 py-2':
+            'bg-gray-50 text-gray-500 relative px-3 py-2':
               index + 1 <= previousMonthPaddingDays ||
               index + 1 > previousMonthPaddingDays + daysInMonth,
             'bg-white relative px-3 py-2':
@@ -41,7 +41,7 @@
                 </p>
                 <time
                   dateTime="2022-01-03T10:00"
-                  class="jr hidden uj axm brn diq"
+                  class="jr hidden uj text-gray-500 brn diq"
                 >
                   {{ formatTime(event.date) }}
                 </time>
@@ -59,7 +59,7 @@
           v-for="(dateObj, index) in daysArray"
           :key="dateObj.formattedDate"
           :class="{
-            'ail axm relative px-3 py-2':
+            'bg-gray-50 text-gray-500 relative px-3 py-2':
               index + 1 <= previousMonthPaddingDays ||
               index + 1 > previousMonthPaddingDays + daysInMonth,
             'bg-white relative px-3 py-2':
@@ -71,13 +71,13 @@
           <time
             :datetime="dateObj.formattedDate"
             :class="{
-              'flex h-6 w-6 yz ze ads bg-primaryColor awg bah':
+              'flex h-6 w-6 justify-center ze ads bg-primaryColor awg bah':
                 currentFormattedDate == dateObj.formattedDate,
             }"
             >{{ dateObj.day }}</time
           >
           <template v-if="getEvents(dateObj.formattedDate).length">
-            <span class="t"
+            <span class="sr-only"
               >{{ getEvents(dateObj.formattedDate).length }} events</span
             >
             <span class="fs lk flex yp">

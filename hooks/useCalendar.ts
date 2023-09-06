@@ -17,6 +17,7 @@ type CalendarState = {
   currentMonth: string;
   currentYear: number;
   currentFormattedDate: string;
+  currentWeekDays: Day[];
 };
 
 const weekdays = [
@@ -38,17 +39,20 @@ const initialState: CalendarState = {
   currentYear: 0,
   previousMonthPaddingDays: 0,
   currentFormattedDate: '',
+  currentWeekDays: [],
 };
 
 const useCalendar = () => {
   const state = reactive({...initialState});
   let firstLoad = true;
+
   const load = () => {
     const dt = new Date();
 
     state.daysInMonth = 0;
     state.previousMonthPaddingDays = 0;
     state.daysArray = [];
+    state.currentWeekDays = [];
 
     if (firstLoad) {
       state.currentWeekDay = weekdays[dt.getDay()];
@@ -140,6 +144,37 @@ const useCalendar = () => {
         }),
       });
     }
+
+    //fill currentWeekDays
+    const currentDayIndex = weekdays.indexOf(state.currentWeekDay);
+    const daysUntilSunday = (7 - currentDayIndex) % 7; // Calculate days until Sunday
+  
+    // Calculate the start date of the current week (Sunday)
+    const startOfWeek = new Date(dt);
+    startOfWeek.setDate(dt.getDate() - daysUntilSunday);
+  
+    // Fill the currentWeekDays array with the days of the current week (Sunday to Saturday)
+    for (let i = 1; i <= 7; i++) {
+      const day = new Date(startOfWeek);
+      day.setDate(startOfWeek.getDate() + i);
+      state.currentWeekDays.push({
+        day: day.getDate(),
+        date: day,
+        formattedDate: day.toLocaleDateString('en-us', {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        }),
+        formattedDateWithWeekday: day.toLocaleDateString('en-us', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        }),
+      });
+    }
+
+    
   };
 
   watch(

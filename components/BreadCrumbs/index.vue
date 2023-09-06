@@ -5,7 +5,7 @@
         <div class="flex">
           <nuxt-link
             to="/dashboard"
-            class="flex gap-3 text-sm font-semibold text-gray-500 hover:text-gray-700"
+            class="flex gap-3 text-sm font-medium text-gray-500 hover:text-gray-700"
             ><HomeIcon class="h-5 w-5" /> <span>Home</span></nuxt-link
           >
         </div>
@@ -16,7 +16,7 @@
           <nuxt-link
             :event="crumb.disabled ? '' : 'click'"
             :to="crumb.href"
-            class="text-sm font-semibold text-gray-600 hover:text-gray-700"
+            class="text-sm font-medium text-gray-600 hover:text-gray-700"
             >{{ crumb.name }}</nuxt-link
           >
         </div>

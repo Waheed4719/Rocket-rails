@@ -1,13 +1,10 @@
 <template>
   <div class="relative overflow-x-auto shadow-sm sm:rounded-lg border">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <TableHeader :data="TableHeaderData" @sort="sortTable" />
-      <tbody>
-        <slot name="body"></slot>
-      </tbody>
+        <slot />
     </table>
     <div
-      v-if="!data.length"
+      v-if="!slotHasContent"
       class="flex text-center items-center justify-center h-[53px]"
     >
       No Data Found!
@@ -17,22 +14,15 @@
 
 <script setup lang="ts">
 import { defineComponent } from "vue";
-import TableHeader from "./TableHeader.vue";
-import TableRow from "./TableRow.vue";
-import { TableHeaderData } from "../../constants/index.ts";
+import { TableHeaderData } from "../../constants";
 
 const slots = useSlots()
-const hasSlot = (name) => {
-    console.log(!!slots[name])
-    return !!slots[name];
+const slotHasContent = (name: string) => {
+  return !!slots.default;
   }
 
 defineComponent({
   name: "TableComponent",
-  components: {
-    TableHeader,
-    TableRow,
-  },
 });
 
 defineProps<{

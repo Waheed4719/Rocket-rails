@@ -31,14 +31,7 @@
             <div
               class="relative transform rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg overflow-visible"
             >
-              <ModalContent>
-                <slot />
-              </ModalContent>
-              <ModalFooter
-                :primaryActionText="primaryActionText"
-                :secondaryActionText="secondaryActionText"
-                @handleModal="handleModal"
-              />
+            <slot />
             </div>
           </TransitionChild>
         </div>
@@ -55,26 +48,9 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
-import { ExclamationTriangleIcon } from "@heroicons/vue/24/outline";
-import ModalContentVue from "./ModalContent.vue";
-import { ModalActionType } from "types";
 
 defineProps<{
   open: boolean;
-  primaryActionText: string;
-  secondaryActionText: string;
 }>();
 
-const emits = defineEmits<{
-  (e: "handleModal", type: ModalActionType): boolean;
-  (e: "onLoad"): HTMLElement | null;
-}>();
-
-const handleModal = (type: ModalActionType) => {
-  emits("handleModal", type);
-};
-
-const closeModal = () => {
-  emits("handleModal", "close");
-};
 </script>

@@ -16,6 +16,11 @@ export const routes = <Route[]>[
         icon: 'UsersIcon',
     },
     {
+        name: 'Chats',
+        path: '/chats',
+        icon: 'ChatBubbleLeftIcon',
+    },
+    {
         name: 'Projects',
         path: '/projects',
         icon: 'FolderIcon',

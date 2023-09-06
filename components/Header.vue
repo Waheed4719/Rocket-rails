@@ -1,6 +1,6 @@
 <template>
   <div
-    class="lg:hidden top-0 z-5 sticky flex h-16 shrink-0 items-center gap-x-4 border-b afp bg-white px-4 bbi cbu cex ddc"
+    class="lg:hidden top-0 z-20 sticky flex h-16 shrink-0 items-center gap-x-4 border-b afp bg-white px-4 bbi cbu cex ddc"
   >
     <button
       type="button"
@@ -82,7 +82,7 @@
           >
             <span class="sr-only">Open user menu</span>
             <img
-              class="h-8 w-8 rounded-full ail"
+              class="h-8 w-8 rounded-full bg-gray-50"
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
               alt=""
             />

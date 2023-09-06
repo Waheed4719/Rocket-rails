@@ -1,6 +1,6 @@
 <template lang="">
   <div
-    class="grid gap-px border-b text-center avx font-semibold leading-6 axo cxn bg-gray-200 border-gray-300"
+    class="grid gap-px border-b text-center avx font-semibold leading-6 axo lg:flex-none bg-gray-200 border-gray-300"
     style="grid-template-columns: repeat(7, minmax(0, 1fr))"
   >
     <div class="bg-white py-2">S<span class="t bsk">un</span></div>

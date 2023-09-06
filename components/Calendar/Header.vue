@@ -1,6 +1,6 @@
 <template>
   <header
-    class="bg-white flex items-center justify-between border-b afp py-4 cxn"
+    class="bg-white flex items-center justify-between border-b afp py-4 lg:flex-none"
   >
     <h1 class="avt font-semibold awk axq">
       <time datetime="2022-01">{{ currentMonth + " " + currentYear }}</time>
@@ -11,9 +11,9 @@
         <button
           @click="prevMonth"
           type="button"
-          class="flex items-center yz ady arq ath atz axk bks bmb clt coi cpw"
+          class="flex items-centerjustify-center ady arq ath atz axk bks bmb cltmd:px-2 cpw"
         >
-          <span class="t">Previous month</span>
+          <span class="sr-only">Previous month</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
@@ -31,17 +31,17 @@
         <button
           @click="getToday"
           type="button"
-          class="hidden arb avv font-semibold axq bic bmb ckz"
+          class="hidden px-3.5 text-sm font-medium axq bic bmb md:block"
         >
           Today
         </button>
-        <span class="relative gb nu w-px aih clg"></span>
+        <span class="relative gb nu w-px aih md:hidden"></span>
         <button
           @click="nextMonth"
           type="button"
-          class="flex items-center yz aec arq ati atx axk bks bmb clt coi cpw"
+          class="flex items-centerjustify-center aec arq ati atx axk bks bmb cltmd:px-2 cpw"
         >
-          <span class="t">Next month</span>
+          <span class="sr-only">Next month</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
@@ -68,13 +68,13 @@
         <div class="ml-4 h-6 w-px aih"></div>
         <button
           type="button"
-          class="ml-4 adp bg-primaryColor ara arq avv font-semibold bac bbi bin bot bou bow bpf"
+          class="ml-4 adp bg-primaryColor ara arq avvt-sm font-medium bac bbi bin bot bou bow bpf"
           @click="addEvent"
         >
           Add event
         </button>
       </div>
-      <div class="relative ml-6 clg">
+      <div class="relative ml-6 md:hidden">
         <button
           class="fv flex items-center adn aeu agt aql axk bks"
           id="headlessui-menu-button-2"
@@ -82,7 +82,7 @@
           aria-haspopup="menu"
           aria-expanded="false"
         >
-          <span class="t">Open menu</span>
+          <span class="sr-only">Open menu</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"

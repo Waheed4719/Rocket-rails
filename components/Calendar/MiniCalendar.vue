@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="-mb-2 grid grid-cols-7 avx awk axm">
+    <div class="-mb-2 grid grid-cols-7 avx awk text-gray-500">
       <div v-for="dayObj in weekdays" :key="dayObj.id">{{ dayObj.value }}</div>
     </div>
     <div
@@ -37,9 +37,9 @@
         <time
           :dateTime="dateObj.formattedDate"
           :class="{
-            'ajm awb bac gs ls nz sc yu yz adn':
+            'ajm awb bac gs ls nz sc yu justify-center adn':
               currentFormattedDate == dateObj.formattedDate,
-            'gs ls nz sc yu yz adn':
+            'gs ls nz sc yu justify-center adn':
               currentFormattedDate != dateObj.formattedDate,
           }">
           {{ dateObj.day }}
@@ -118,7 +118,7 @@ const generateDaysclass = (index: number) => {
   return `${
     index + 1 <= previousMonthPaddingDays.value ||
     index + 1 > previousMonthPaddingDays.value + daysInMonth.value
-      ? 'ail axk py-1.5 bhx bmc'
+      ? 'bg-gray-50 axk py-1.5 bhx bmc'
       : ''
   }  ${
     index + 1 > previousMonthPaddingDays.value &&

@@ -1,6 +1,7 @@
 <template>
-  <div class="ail cvb cwb">
-    <div class="cut cvu cyy">
+  <!-- <WeekView  /> -->
+  <div class="bg-gray-50 lg:h-0 lg:min-h-[768px]">
+    <div class="lg:flex lg:h-full flex-col">
       <CalendarHeader
         @prevMonth="goToPreviousMonth"
         @nextMonth="goToNextMonth"
@@ -24,6 +25,7 @@
         :currentFormattedDate="currentFormattedDate"
       />
       <DayView v-if="selectedView.value == 'day'" />
+      <WeekView v-if="selectedView.value == 'week'" />
       <div class="px-4 py-10 md:px-6 lg:hidden">
         <ol
           class="relative aca overflow-hidden ado bg-white avv bbd bbo bbt bdq"
@@ -63,7 +65,7 @@
               class="ju uj acy adp bg-white px-3 py-2 awb axq bas bbi bbo bbs bca blw bmt brx"
             >
               Edit
-              <span class="t">, {{ event.title }}</span>
+              <span class="sr-only">, {{ event.title }}</span>
             </a>
           </li>
         </ol>
@@ -80,6 +82,7 @@ import CalendarDays from "@/components/Calendar/Days.vue";
 import useCalendar from "@/hooks/useCalendar";
 import MonthView from "./MonthView.vue";
 import DayView from "./DayView.vue";
+import WeekView from "./WeekView.vue";
 import { ListBoxSelectOption } from "types";
 
 defineComponent({
@@ -117,19 +120,19 @@ const {
 // write the dates in iso format
 const events = [
   {
-    date: "2023-08-23T15:00", // '2022-01-22T15:00
+    date: "2023-09-23T15:00", // '2022-01-22T15:00
     title: "Maple syrup museum",
   },
   {
-    date: "2023-08-22T19:00", // '2022-01-22T19:00
+    date: "2023-09-22T19:00", // '2022-01-22T19:00
     title: "Hockey game",
   },
   {
-    date: "2023-08-23T15:00", // '2022-01-22T15:00
+    date: "2023-09-23T15:00", // '2022-01-22T15:00
     title: "Interview at Apple",
   },
   {
-    date: "2023-08-12T15:00", // '2022-01-22T15:00
+    date: "2023-09-12T15:00", // '2022-01-22T15:00
     title: "Meeting with the boss",
   },
 ];
