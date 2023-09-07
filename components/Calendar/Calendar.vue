@@ -8,6 +8,7 @@
         @getToday="goToToday"
         @prevYear="goToPreviousYear"
         @nextYear="goToNextYear"
+        :currentWeekDays="currentWeekDays"
         :currentMonth="currentMonth"
         :currentYear="currentYear"
         :openModal="openModal"
@@ -115,6 +116,7 @@ const {
   previousMonthPaddingDays,
   daysInMonth,
   currentFormattedDate,
+  currentWeekDays
 } = state;
 
 // write the dates in iso format

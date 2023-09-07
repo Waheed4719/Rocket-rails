@@ -1,11 +1,24 @@
 <template>
-  <div class="flex flex-col border-r border-px">
-    <div class="flex justify-between items-center p-4">
+  <div class="hidden md:flex flex-col border-r border-px ">
+    <div class="flex justify-between items-center p-4 px-4">
       <h1 class="text-gray-700 text-lg font-semibold">Messages</h1>
       <div class="flex gap-4">
-        <PencilSquareIcon class="h-5 w-5 text-gray-400 hover:text-gray-500 cursor-pointer" />
-        <MagnifyingGlassIcon class="h-5 w-5 text-gray-400 hover:text-gray-500 cursor-pointer" />
+        <PencilSquareIcon
+          class="h-5 w-5 text-gray-400 hover:text-gray-500 cursor-pointer"
+        />
+        <MagnifyingGlassIcon
+          class="h-5 w-5 text-gray-400 hover:text-gray-500 cursor-pointer"
+        />
       </div>
+    </div>
+    <div class="px-4 mb-2 relative">
+      <input
+        placeholder="Search conversations"
+        class="border outline-none pl-4 pr-10 transition-all duration-150 text-sm focus:ring-2 focus:ring-blue-500 text-gray-600 border-gray-300 rounded-md h-10 w-full"
+      />
+      <MagnifyingGlassIcon
+        class="h-5 w-5 text-gray-400 hover:text-gray-500 cursor-pointer absolute right-6 -translate-y-1/2 top-1/2"
+      />
     </div>
     <div class="py-2 px-4">
       <div class="flex justify-between items-start mb-4">
@@ -17,7 +30,7 @@
           <p class="text-gray-500 text-sm">You have 10 contacts online</p>
         </div>
 
-        <button class="text-gray-500 hover:text-gray-600 text-md">
+        <button class="text-gray-400 hover:text-gray-600 text-md">
           See all
         </button>
       </div>
@@ -37,7 +50,7 @@
       <h3 class="font-semibold text-gray-700 text-lg">Conversations</h3>
       <p class="text-gray-500 text-sm">You have 10 unread messages</p>
     </div>
-    <ul class="overflow-y-scroll h-[520px]">
+    <ul class="overflow-y-scroll flex flex-col">
       <li
         v-for="chat in chats"
         :key="chat.id"
@@ -50,7 +63,9 @@
         />
         <div class="flex flex-col">
           <h3 class="font-medium text-gray-700">{{ chat.name }}</h3>
-          <p class="text-gray-500 text-sm truncate">{{ chat.lastMessage }}</p>
+          <p class="text-gray-500 text-sm truncate w-50">
+            {{ chat.lastMessage }}
+          </p>
         </div>
       </li>
     </ul>

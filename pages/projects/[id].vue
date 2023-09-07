@@ -1,5 +1,5 @@
 <template>
-  <div class="px-8">
+  <div class="mb-4 mt-5 px-8">
     <BreadCrumbs :crumbs="breadCrumbs" />
     <div class="flex justify-between">
       <h1 class="text-2xl font-bold text-gray-700">Project Nero</h1>
@@ -128,7 +128,7 @@ async function drop(
   const taskId = ev.dataTransfer!.getData("text");
   const taskIndex = tasks?.findIndex((task) => task._id === taskId);
   const prevTask = { ...tasks[taskIndex] };
-  const prevTasks = tasks.map(task => ({...task}));
+  const prevTasks = tasks.map((task) => ({ ...task }));
   if (taskIndex !== -1 && tasks && taskIndex !== undefined) {
     tasks[taskIndex].status = status;
     tasks[taskIndex].position = position;

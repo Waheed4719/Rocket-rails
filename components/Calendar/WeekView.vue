@@ -1,7 +1,7 @@
 <template lang="">
   <div class="isolate flex flex-auto flex-col overflow-auto bg-white">
     <div class="sticky top-0 z-30 flex-none bg-white bbi bbt bby bdv sm:pr-8">
-      <div class="grid grid-cols-7 text-sm leading-6 axr sm:hidden">
+      <div class="grid grid-cols-7 text-sm leading-6 text-gray-500 sm:hidden">
         <button
           type="button"
           class="flex flex-col items-center asr aut"
@@ -9,15 +9,15 @@
           :key="day"
         >
           {{ day }}
-          <span class="ku flex og sj items-center justify-center awg axv"
+          <span class="ku flex og sj items-center justify-center font-semibold text-gray-900"
             >10</span
           >
         </button>
       </div>
       <div
-        class="-mr-px hidden grid-cols-7 acb acf border-r-px aft text-sm leading-6 axr sm:grid"
+        class="-mr-px hidden grid-cols-7 acb acf border-r-px aft text-sm leading-6 text-gray-500 sm:grid"
       >
-        <div class="fg w-14"></div>
+        <div class="col-end-1 w-14"></div>
         <div
           class="flex items-center justify-center py-3"
           v-for="day in days"
@@ -25,7 +25,7 @@
         >
           <span
             >{{ day }}
-            <span class="items-center justify-center awg axv">10</span></span
+            <span class="items-center justify-center font-semibold text-gray-900">10</span></span
           >
         </div>
       </div>
@@ -76,7 +76,7 @@
               :key="event.name"
               :style="isoStringToGridRow(event.startTime, event.endTime)"
               @click="console.log(event, formatTime(event.startTime))"
-              class="relative mt-px flex col-start-3"
+              class="relative mt-px flex sm:col-start-3"
             >
               <a
                 href="#"
@@ -85,7 +85,7 @@
                   'bg-rose-100 hover:bg-rose-200': index % 2 === 0,
                   'bg-blue-100 hover:bg-blue-200': index % 2 !== 0,
                 }"
-                ><p class="el awg axe">Breakfast</p>
+                ><p class="el font-semibold axe">Breakfast</p>
                 <p class="axc brh">
                   <time datetime="2022-01-12T06:00">6:00 AM</time>
                 </p></a

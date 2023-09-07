@@ -3,10 +3,10 @@
     <div class="flex justify-between">
       <div class="flex gap-2">
         <button @click="goToPreviousYear">
-          <ChevronDoubleLeftIcon class="h-4 w-4" />
+          <ChevronDoubleLeftIcon class="h-4 w-4 text-gray-400 hover:text-gray-600" />
         </button>
         <button @click="goToPreviousMonth">
-          <ChevronLeftIcon class="h-4 w-4" />
+          <ChevronLeftIcon class="h-4 w-4 text-gray-400 hover:text-gray-600" />
         </button>
       </div>
 
@@ -15,10 +15,10 @@
       </h2>
       <div class="flex gap-2">
         <button @click="goToNextMonth">
-          <ChevronRightIcon class="h-4 w-4" />
+          <ChevronRightIcon class="h-4 w-4 text-gray-400 hover:text-gray-600" />
         </button>
         <button @click="goToNextYear">
-          <ChevronDoubleRightIcon class="h-4 w-4" />
+          <ChevronDoubleRightIcon class="h-4 w-4 text-gray-400 hover:text-gray-600" />
         </button>
       </div>
     </div>

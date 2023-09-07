@@ -15,6 +15,7 @@
     "bcryptjs": "^2.4.3",
     "mongoose": "^7.4.3",
     "next-auth": "4.21.1",
+    "socket.io-client": "^4.7.2",
     "tailvue": "^1.0.0",
     "vuex": "^4.0.2"
   },

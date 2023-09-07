@@ -4,7 +4,7 @@
     <div class="lg:pl-72 bg-white">
       <Header :sidebarOpen="sidebarOpen" :dropdownOpen="dropdownOpen" @handleSidebar="handleSidebar"/>
       <!-- h-[calc(100vh-64px)] -->
-      <main class="py-5 overflow-auto min-h-screen">
+      <main class="overflow-auto min-h-screen">
         <slot :key="$route.path" />
       </main>
     </div>

@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="flex flex-col w-[350px] bg-white border-px border-l">
+  <div class="hidden md:flex flex-col w-[350px] bg-white border-px border-l pt-20">
     <div class="flex flex-col items-center pt-8 pb-4">
       <img
         :src="`https://i.pravatar.cc/150?u=1`"
@@ -16,11 +16,11 @@
 
     <div class="px-4 py-2 flex justify-between">
       <h3 class="font-semibold text-gray-700 text-lg">24 Participants</h3>
-      <button class="text-gray-500 hover:text-gray-600 text-md">See all</button>
+      <button class="text-gray-400 hover:text-gray-600 text-md">See all</button>
     </div>
-    <ul class="">
+    <ul class="overflow-auto">
       <li
-        v-for="chat in chats.slice(0, 4)"
+        v-for="chat in chats.slice(0, 3)"
         :key="chat.id"
         class="flex items-center gap-3 py-2 px-4 hover:bg-gray-100 cursor-pointer"
       >
@@ -38,11 +38,11 @@
 
     <div class="px-4 py-2 flex justify-between">
       <h3 class="font-semibold text-gray-700 text-lg">Shared Media</h3>
-      <button class="text-gray-500 hover:text-gray-600 text-md">See all</button>
+      <button class="text-gray-400 hover:text-gray-600 text-md">See all</button>
     </div>
-    <ul class="">
+    <ul class="overflow-auto">
       <li
-        v-for="(chat, index) in chats.slice(0, 4)"
+        v-for="(chat, index) in chats.slice(0, 3)"
         :key="chat.id"
         class="flex items-center gap-3 py-2 px-4 hover:bg-gray-100 cursor-pointer"
       >

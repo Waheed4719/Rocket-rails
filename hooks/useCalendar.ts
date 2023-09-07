@@ -5,6 +5,7 @@ export type Day = {
   date: Date;
   formattedDate: string;
   formattedDateWithWeekday: string
+  month: string;
 };
 // Define the state type
 type CalendarState = {
@@ -29,6 +30,21 @@ const weekdays = [
   'Friday',
   'Saturday',
 ];
+
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
 const initialState: CalendarState = {
   nav: 0,
   daysArray: [],
@@ -123,6 +139,7 @@ const useCalendar = () => {
       state.daysArray.push({
         day: day,
         date: new Date(state.currentYear, currentMonth, day),
+        month: months[currentMonth],
         formattedDate: new Date(
           state.currentYear,
           currentMonth,
@@ -160,6 +177,7 @@ const useCalendar = () => {
       state.currentWeekDays.push({
         day: day.getDate(),
         date: day,
+        month: months[day.getMonth()],
         formattedDate: day.toLocaleDateString('en-us', {
           year: 'numeric',
           month: 'numeric',

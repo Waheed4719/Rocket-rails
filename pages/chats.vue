@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-4 px-8">
+    <div class="mt-5 px-8">
       <BreadCrumbs :crumbs="breadCrumbs" />
       <div class="flex justify-between">
         <h1 class="text-2xl font-bold text-gray-700">🗨️ Chats</h1>

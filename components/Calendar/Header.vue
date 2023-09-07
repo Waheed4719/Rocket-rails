@@ -3,7 +3,10 @@
     class="bg-white flex items-center justify-between border-b afp py-4 lg:flex-none"
   >
     <h1 class="avt font-semibold awk axq">
-      <time datetime="2022-01">{{ currentMonth + " " + currentYear }}</time>
+      <time datetime="2022-01">{{
+        getMonthOrRange()
+      }}</time>
+ 
     </h1>
     <div class="flex items-center">
       <div class="relative flex items-center adp alj bbi cmx">
@@ -104,16 +107,17 @@
 import { defineComponent, ref } from "vue";
 import Listbox from "@/components/Listbox.vue";
 import { ListBoxSelectOption } from "types";
+import { Day } from "hooks/useCalendar";
 defineComponent({
   name: "CalendarHeader",
 });
-
 
 const props = defineProps<{
   currentMonth: String;
   currentYear: Number;
   openModal: Boolean;
   selectedView: ListBoxSelectOption;
+  currentWeekDays: Day[];
 }>();
 
 const emits = defineEmits<{
@@ -164,6 +168,27 @@ watchEffect(() => {
     selectedOption.value = props.selectedView;
   }
 });
+
+const getMonthOrRange = () => {
+  const { currentMonth, currentYear, selectedView, currentWeekDays } = props;
+  if (selectedView.value !== "week") {
+    return currentMonth + " " + currentYear;
+  }
+  // format the range like september 2023 - october 2023
+  const formattedDateStart = currentWeekDays[0].date.toLocaleDateString(
+    "en-US",
+    {
+      month: "long",
+      year: "numeric",
+    }
+  );
+  const formattedDateEnd = currentWeekDays[6].date.toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+  });
+  if (formattedDateStart === formattedDateEnd) return formattedDateStart;
+  return `${formattedDateStart} - ${formattedDateEnd}`;
+};
 
 const updateSelectedOption = (option: ListBoxSelectOption) => {
   selectedOption.value = option;
